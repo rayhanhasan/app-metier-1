@@ -10,6 +10,14 @@ Démo de stand pour un club d'affaires. Elle montre ce qu'une **application mét
 - **Fiche & comparatif** : fiche A4 recto verso, avec la comparaison sourcée face à un logiciel concurrent réel (Crypto, d'Orisha Real Estate).
 - **Mode salon** : visite guidée en boucle quand personne ne touche l'écran.
 
+## Aperçu
+
+| Plan du parc | Lots & locataires |
+|---|---|
+| ![Plan du parc](docs/apercus/1-plan-du-parc.jpg) | ![Lots](docs/apercus/2-lots.jpg) |
+| **Conformité DPE** | **Connecteurs (API publiques en direct)** |
+| ![Conformité DPE](docs/apercus/3-conformite-dpe.jpg) | ![Connecteurs](docs/apercus/4-connecteurs.jpg) |
+
 ## Lancer la démo
 
 ```bash
