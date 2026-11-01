@@ -91,8 +91,8 @@ function Quittance({ lotId, onClose }: { lotId: string; onClose: () => void }) {
           <div className="mt-5 text-right font-sans text-[12px] text-slate-500">Fait à Lyon, le {fmtDate(TODAY.toISOString())}</div>
         </div>
         <div className="mt-4 flex justify-end gap-2">
-          <button onClick={() => window.print()} className="btn-secondary">
-            <Printer size={15} /> Imprimer
+          <button onClick={() => toast({ tone: 'success', title: 'PDF généré', body: 'Quittance archivée dans le dossier du lot.' })} className="btn-secondary">
+            <Printer size={15} /> Télécharger le PDF
           </button>
           <button
             onClick={() => {

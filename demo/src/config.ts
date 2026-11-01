@@ -34,3 +34,12 @@ export const IRL = {
 
 /** Délai d'inactivité avant le lancement automatique du mode salon (ms). */
 export const KIOSK_IDLE_MS = 45_000
+
+/** Vos coordonnées, affichées sur la fiche A4 (à remplacer). */
+export const MAKER = {
+  name: 'Votre nom',
+  activity: 'Applications métier sur mesure & landing pages',
+  phone: '06 00 00 00 00',
+  email: 'contact@votre-domaine.fr',
+  site: 'votre-domaine.fr',
+}

@@ -1,14 +1,13 @@
-import { lazy, Suspense } from 'react'
 import { useStore } from './store'
 import { Sidebar, Topbar } from './ui/Shell'
 import { PlanPage } from './pages/PlanPage'
 import { LotsPage } from './pages/LotsPage'
 import { DpePage } from './pages/DpePage'
 import { ConnecteursPage } from './pages/ConnecteursPage'
+import { FichePage } from './pages/FichePage'
 import { Modals, Toasts } from './ui/Overlays'
 import { KioskHint, useKiosk } from './ui/Kiosk'
 
-const FichePage = lazy(() => import('./pages/FichePage').then((m) => ({ default: m.FichePage })))
 
 export default function App() {
   const page = useStore((s) => s.page)
@@ -27,11 +26,7 @@ export default function App() {
           {page === 'lots' && <LotsPage />}
           {page === 'dpe' && <DpePage />}
           {page === 'connecteurs' && <ConnecteursPage />}
-          {page === 'fiche' && (
-            <Suspense fallback={null}>
-              <FichePage />
-            </Suspense>
-          )}
+          {page === 'fiche' && <FichePage />}
         </main>
       </div>
       <KioskHint />

@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { AlertTriangle, Banknote, Check, ChevronLeft, ChevronRight, ClipboardCheck, FileClock, Flame, Hammer, KeyRound, ListChecks, TrendingUp } from 'lucide-react'
+import { AlertTriangle, Banknote, Check, ChevronLeft, ChevronRight, ClipboardCheck, FileClock, Flame, Hammer, KeyRound, ListChecks, Receipt, TrendingUp } from 'lucide-react'
 import { useStore } from '../store'
 import { computeAlerts, type Alert } from '../data/insights'
 
@@ -13,6 +13,7 @@ const ICONS: Record<Alert['kind'], typeof AlertTriangle> = {
   travaux: Hammer,
   devis: Hammer,
   diag: ClipboardCheck,
+  regul: Receipt,
 }
 
 const SEV = {
@@ -49,6 +50,10 @@ export function useRunAlert() {
         break
       case 'devis':
         s.toast({ tone: 'success', title: `Relance envoyée à ${lot?.owner}`, body: 'Le propriétaire peut valider le devis en un clic depuis son espace.' })
+        s.markDone(a.id)
+        break
+      case 'regul':
+        s.toast({ tone: 'success', title: `${a.lotIds.length} décomptes de charges générés`, body: 'Détail par poste joint, envoi par e-mail. Le locataire peut contester sous 3 ans : justificatifs archivés.' })
         s.markDone(a.id)
         break
       case 'diag':

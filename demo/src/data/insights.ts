@@ -7,7 +7,7 @@ export type Severity = 'critique' | 'important' | 'info'
 export interface Alert {
   id: string
   severity: Severity
-  kind: 'impaye' | 'dpe' | 'dpe-future' | 'irl' | 'bail' | 'vacance' | 'travaux' | 'diag' | 'devis'
+  kind: 'impaye' | 'dpe' | 'dpe-future' | 'irl' | 'bail' | 'vacance' | 'travaux' | 'diag' | 'devis' | 'regul'
   title: string
   detail: string
   impact?: string
@@ -105,6 +105,23 @@ export function computeAlerts(lots: Lot[]): Alert[] {
       lotIds: irl.map((l) => l.id),
       mode: 'loyers',
       cta: 'Appliquer les révisions',
+    })
+  }
+
+  // 5 bis. Régularisation annuelle des charges (lots en copropriété avec provisions)
+  const regul = lots.filter((l) => occupied(l) && l.buildingId === 'T')
+  if (regul.length) {
+    const due = Math.round(regul.reduce((s, l) => s + l.charges * 12 * 0.045, 0))
+    alerts.push({
+      id: 'regul-T',
+      severity: 'important',
+      kind: 'regul',
+      title: `Régularisation des charges ${CURRENT_YEAR - 1} · ${regul.length} lots`,
+      detail: `Résidence Les Tilleuls. Charges réelles du syndic rapprochées des provisions versées : décomptes prêts à envoyer.`,
+      impact: `+${fmtEur(due)} à rappeler`,
+      lotIds: regul.map((l) => l.id),
+      mode: 'loyers',
+      cta: 'Générer les décomptes',
     })
   }
 

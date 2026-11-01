@@ -174,8 +174,22 @@ input.timeline::-moz-range-thumb {
   cursor: grab;
 }
 
+/* Fiche A4 : impression et export PDF */
+html.fiche-mode,
+html.fiche-mode body,
+html.fiche-mode #root {
+  height: auto;
+  overflow: auto;
+  touch-action: auto;
+  user-select: text;
+}
+@page {
+  size: A4;
+  margin: 0;
+}
 @media print {
-  body * {
-    visibility: hidden;
+  html,
+  body {
+    background: white;
   }
 }
