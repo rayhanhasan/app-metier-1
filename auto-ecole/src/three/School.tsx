@@ -71,6 +71,8 @@ function useMats() {
       ceiling: new THREE.MeshStandardMaterial({ color: '#d8d5cd', roughness: 0.95, side: THREE.DoubleSide }),
       panel: new THREE.MeshStandardMaterial({ color: '#ffffff', emissive: '#fff4dd', emissiveIntensity: 0.75, roughness: 1 }),
       metal: new THREE.MeshStandardMaterial({ color: '#9aa0a8', roughness: 0.35, metalness: 0.85 }),
+      wood: new THREE.MeshStandardMaterial({ color: '#a8794a', roughness: 0.7 }),
+      solar: new THREE.MeshPhysicalMaterial({ color: '#10224a', roughness: 0.15, metalness: 0.6, clearcoat: 1, envMapIntensity: 1.6 }),
     }),
     [],
   )
@@ -149,12 +151,12 @@ function Fascia({ mats }: { mats: ReturnType<typeof useMats> }) {
   return (
     <group>
       <Box p={[(x0 + x1) / 2, y, zFront + 0.22]} s={[W + 0.5, hBand, 0.5]} m={mats.blue} />
-      <mesh position={[(x0 + x1) / 2, y, zFront + 0.475]} userData={{ glow: 1.6 }}>
+      <mesh position={[(x0 + x1) / 2, y, zFront + 0.475]} userData={{ glow: 0.55 }}>
         <planeGeometry args={[W + 0.3, hBand]} />
         <meshStandardMaterial map={tex} emissiveMap={tex} emissive="#ffffff" emissiveIntensity={0.25} roughness={0.55} />
       </mesh>
       <Box p={[x1 + 0.22, y, (zFront + zBack) / 2]} s={[0.5, hBand, D + 0.5]} m={mats.blue} />
-      <mesh position={[x1 + 0.475, y, zFront - 3.6]} rotation={[0, Math.PI / 2, 0]} userData={{ glow: 1.6 }}>
+      <mesh position={[x1 + 0.475, y, zFront - 3.6]} rotation={[0, Math.PI / 2, 0]} userData={{ glow: 0.55 }}>
         <planeGeometry args={[7, hBand]} />
         <meshStandardMaterial map={side} emissiveMap={side} emissive="#ffffff" emissiveIntensity={0.25} roughness={0.55} />
       </mesh>
@@ -167,6 +169,33 @@ function UpperFloor({ mats }: { mats: ReturnType<typeof useMats> }) {
   const h = SCHOOL.upperH
   const cy = UP0 + h / 2
   const upperGeo = useMemo(() => worldBox(W, h, D), [h])
+  const roundel = canvasTexture('roundel', 256, 256, (g, w, hh) => {
+    g.fillStyle = BRAND.color
+    g.fillRect(0, 0, w, hh)
+    g.strokeStyle = '#fff'
+    g.lineWidth = 16
+    g.beginPath()
+    g.arc(w / 2, hh / 2, 84, 0, Math.PI * 2)
+    g.stroke()
+    g.beginPath()
+    g.moveTo(w / 2 - 80, hh / 2 + 8)
+    g.lineTo(w / 2 + 80, hh / 2 + 8)
+    g.moveTo(w / 2, hh / 2 + 8)
+    g.lineTo(w / 2, hh / 2 + 80)
+    g.stroke()
+    g.fillStyle = '#fff'
+    g.beginPath()
+    g.arc(w / 2, hh / 2 + 6, 22, 0, Math.PI * 2)
+    g.fill()
+  })
+  const letters = canvasTexture('roof-letters', 2048, 256, (g, w, hh) => {
+    g.clearRect(0, 0, w, hh)
+    g.fillStyle = '#ffffff'
+    g.textAlign = 'center'
+    g.textBaseline = 'middle'
+    g.font = `800 212px ${FONT}`
+    g.fillText('AUTO-ÉCOLE', w / 2, hh / 2 + 10)
+  })
   const win = (key: string, p: [number, number, number], rot: number, w = 1.55) => (
     <group key={key} position={p} rotation={[0, rot, 0]}>
       <mesh material={mats.glassUp} position={[0, 0, 0.02]}>
@@ -182,6 +211,27 @@ function UpperFloor({ mats }: { mats: ReturnType<typeof useMats> }) {
   return (
     <group>
       <mesh position={[(x0 + x1) / 2, cy, (zFront + zBack) / 2]} material={plaster} geometry={upperGeo} castShadow receiveShadow />
+      {/* bandeau sombre qui relie les fenêtres (façade sud et pignon est) */}
+      <Box p={[(x0 + x1) / 2, cy + 0.1, zFront + 0.012]} s={[W - 0.7, 2.0, 0.03]} m={mats.dark} shadow={false} />
+      <Box p={[x1 + 0.012, cy + 0.1, -14]} s={[0.03, 2.0, 8.4]} m={mats.dark} shadow={false} />
+      {/* brise-soleil verticaux en bois entre les travées */}
+      {Array.from({ length: BAYS + 1 }, (_, i) => (
+        <Box key={`fin${i}`} p={[bayX(i), cy + 0.1, zFront + 0.22]} s={[0.1, h - 0.5, 0.42]} m={mats.wood} />
+      ))}
+      {[-9.4, -12.5, -15.5, -18.6].map((z) => (
+        <Box key={`finE${z}`} p={[x1 + 0.22, cy + 0.1, z]} s={[0.42, h - 0.5, 0.1]} m={mats.wood} />
+      ))}
+      {/* enseigne drapeau à l'angle ouest */}
+      <group position={[x0 - 0.62, UP0 + 1.5, zFront + 0.1]}>
+        <Box p={[0.3, 0.52, 0]} s={[0.7, 0.05, 0.05]} m={mats.frame} shadow={false} />
+        <Box p={[0, 0, 0]} s={[0.12, 1.0, 1.0]} m={mats.blue} />
+        {[0.062, -0.062].map((dx, i) => (
+          <mesh key={dx} position={[dx, 0, 0]} rotation={[0, i ? -Math.PI / 2 : Math.PI / 2, 0]} userData={{ glow: 1.8 }}>
+            <planeGeometry args={[0.96, 0.96]} />
+            <meshStandardMaterial map={roundel} emissiveMap={roundel} emissive="#ffffff" emissiveIntensity={0.3} roughness={0.5} />
+          </mesh>
+        ))}
+      </group>
       {Array.from({ length: BAYS }, (_, i) => win(`f${i}`, [bayX(i) + bayW / 2, cy + 0.1, zFront], 0))}
       {[-11, -14, -17].map((z) => win(`e${z}`, [x1, cy + 0.1, z], Math.PI / 2))}
       {[-11, -14, -17].map((z) => win(`w${z}`, [x0, cy + 0.1, z], -Math.PI / 2))}
@@ -198,6 +248,29 @@ function UpperFloor({ mats }: { mats: ReturnType<typeof useMats> }) {
       <Box p={[x0 + 3.2, UP1 + 0.75, zBack + 2.6]} s={[2.2, 1.0, 1.4]} m={mats.metal} />
       <Box p={[x0 + 6.2, UP1 + 0.6, zBack + 2.4]} s={[1.3, 0.7, 1.1]} m={mats.metal} />
       <Box p={[x1 - 3.5, UP1 + 0.3, zFront - 3.5]} s={[2.4, 0.25, 2.4]} m={mats.glassUp} />
+      {/* lettres lumineuses en toiture */}
+      <group position={[(x0 + x1) / 2 - 1.2, UP1 + 0.7, zFront - 0.25]}>
+        {[-3.6, 0, 3.6].map((dx) => (
+          <Box key={dx} p={[dx, 0.25, -0.12]} s={[0.07, 0.5, 0.07]} m={mats.frame} shadow={false} />
+        ))}
+        <Box p={[0, 0.5, -0.12]} s={[9.2, 0.06, 0.06]} m={mats.frame} shadow={false} />
+        <mesh position={[0, 1.02, 0]} userData={{ glow: 2.2 }} castShadow>
+          <planeGeometry args={[9.4, 1.12]} />
+          <meshStandardMaterial map={letters} emissiveMap={letters} emissive="#ffffff" emissiveIntensity={0.18} alphaTest={0.5} side={THREE.DoubleSide} roughness={0.6} />
+        </mesh>
+      </group>
+      {/* panneaux solaires */}
+      {[0, 1, 2].map((r) =>
+        [0, 1, 2, 3].map((c) => (
+          <mesh key={`${r}${c}`} position={[x1 - 6.6 + c * 1.25, UP1 + 0.42, zBack + 1.6 + r * 1.5]} rotation={[-0.3, 0, 0]} material={mats.solar} castShadow>
+            <boxGeometry args={[1.15, 0.04, 1.25]} />
+          </mesh>
+        )),
+      )}
+      {/* garde-corps vitré côté rue */}
+      <mesh position={[(x0 + x1) / 2, UP1 + 1.05, zFront + 0.05]} material={mats.glass} renderOrder={5}>
+        <planeGeometry args={[W + 0.2, 0.7]} />
+      </mesh>
     </group>
   )
 }
@@ -323,7 +396,7 @@ function Interior({ mats }: { mats: ReturnType<typeof useMats> }) {
       {/* salle de code : écran mural + chaises */}
       <group position={[x0 + 0.27, 2.05, -13.3]} rotation={[0, Math.PI / 2, 0]}>
         <Box p={[0, 0, -0.03]} s={[3.1, 1.85, 0.07]} m={mats.dark} shadow={false} />
-        <mesh position={[0, 0, 0.012]} userData={{ glow: 1.3 }}>
+        <mesh position={[0, 0, 0.012]} userData={{ glow: 0.25 }}>
           <planeGeometry args={[2.95, 1.66]} />
           <meshStandardMaterial map={screen} emissiveMap={screen} emissive="#ffffff" emissiveIntensity={0.9} roughness={0.4} />
         </mesh>
@@ -397,6 +470,13 @@ export function School() {
       {/* dalle haute */}
       <Box p={[(x0 + x1) / 2, CEIL + SLAB / 2, zc]} s={[W + 0.1, SLAB, D + 0.1]} m={mats.concrete} />
 
+      {/* spots encastrés sous le bandeau d'enseigne */}
+      {Array.from({ length: BAYS * 2 }, (_, i) => (
+        <mesh key={`spot${i}`} position={[x0 + 0.9 + (i * (W - 1.8)) / (BAYS * 2 - 1), CEIL - 0.015, zFront + 0.28]} rotation={[Math.PI / 2, 0, 0]} userData={{ glow: 3 }}>
+          <circleGeometry args={[0.07, 12]} />
+          <meshStandardMaterial color="#fff6e0" emissive="#ffe8b8" emissiveIntensity={0.4} />
+        </mesh>
+      ))}
       <Interior mats={mats} />
       <Fascia mats={mats} />
       <UpperFloor mats={mats} />

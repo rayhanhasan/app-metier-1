@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { MODELS, modelInfo, modelUrl } from '../assets'
 import { sim, useUi } from '../store'
 import type { Vehicle } from '../sim/sim'
-import { BRAND, LOT } from '../world'
+import { BRAND, LOT, SIDE_STREET } from '../world'
 import { canvasTexture, FONT } from './materials'
 import { nightFactor } from './daylight'
 import { Occupant } from './People'
@@ -255,13 +255,17 @@ export function Vehicles() {
   const hasSchoolCar = MODELS.cars.some((c) => c.file === SCHOOL_CAR)
   const fileFor = (v: Vehicle) => (v.kind === 'school' ? (hasSchoolCar ? SCHOOL_CAR : traffic[0]?.file) : (traffic[v.model % Math.max(1, traffic.length)]?.file ?? (hasSchoolCar ? SCHOOL_CAR : undefined)))
   const parked = useMemo(() => {
-    const pool = traffic.length ? traffic.map((t) => t.file) : hasSchoolCar ? [SCHOOL_CAR] : []
+    const pool = [...traffic.map((t) => t.file), ...(hasSchoolCar ? [SCHOOL_CAR] : [])]
     if (!pool.length) return []
-    const colors = ['#2b3440', '#7c1d1d', '#d8d9dc', '#3f5670']
-    return [
+    const colors = ['#2b3440', '#7c1d1d', '#d8d9dc', '#3f5670', '#8b8f96', '#1d3b2f', '#c7b28a', '#111418']
+    const out = [
       { file: pool[0], x: LOT.spotsX[5], z: LOT.spotZ + 0.2, heading: Math.PI, color: colors[0] },
       { file: pool[1 % pool.length], x: LOT.spotsX[6], z: LOT.spotZ - 0.1, heading: Math.PI, color: colors[1] },
     ]
+    // stationnement le long de la rue transversale
+    const xE = SIDE_STREET.x + SIDE_STREET.half - 1.05
+    ;[-14.5, -20.2, -26.4, -37, -43.1, -55].forEach((z, i) => out.push({ file: pool[(i + 2) % pool.length], x: xE, z, heading: Math.PI + (i % 2 ? 0.02 : -0.015), color: colors[(i + 2) % colors.length] }))
+    return out
   }, [traffic, hasSchoolCar])
 
   return (

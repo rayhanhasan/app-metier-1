@@ -114,6 +114,9 @@ function Markings() {
     for (const out of [-1, 1]) for (let x = R.x + R.outerR + 1; x < 150; x += 6.5) q.push({ x: out * (x + 1.5), z: 0, w: 3, d: 0.12 })
     // passage piéton
     for (let z = -ROAD_HALF + 0.45; z < ROAD_HALF; z += 1.0) q.push({ x: CROSSING.x, z, w: CROSSING.half * 2, d: 0.5 })
+    // autres passages piétons : avant chaque giratoire, et à l'entrée de la rue transversale
+    for (const cx of [-(R.x - R.outerR - 5), R.x - R.outerR - 5]) for (let z = -ROAD_HALF + 0.45; z < ROAD_HALF; z += 1.0) q.push({ x: cx, z, w: 3.2, d: 0.5 })
+    for (let x = SIDE_STREET.x - SIDE_STREET.half + 0.45; x < SIDE_STREET.x + SIDE_STREET.half; x += 1.0) q.push({ x, z: -ROAD_HALF - 1.9, w: 0.5, d: 3 })
     // lignes d'arrêt
     q.push({ x: CROSSING.stopNorthLane + 0.5, z: -LANE, w: 0.5, d: 3.1 })
     q.push({ x: CROSSING.stopSouthLane - 0.5, z: LANE, w: 0.5, d: 3.1 })
@@ -160,6 +163,17 @@ function Markings() {
   })
 
   const mat = useMemo(() => new THREE.MeshStandardMaterial({ color: '#f1f1ee', roughness: 0.75, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }), [])
+  // regards et plaques d'égout : petits détails qui cassent l'uniformité du bitume
+  const covers = useMemo(() => {
+    const pts: [number, number, number][] = [[-38, 1.9, 0.38], [-9, -1.6, 0.38], [12, 1.5, 0.34], [31, -1.9, 0.38], [44, 0.6, 0.3], [-27, -0.4, 0.3], [SIDE_STREET.x + 0.8, -22, 0.38], [SIDE_STREET.x - 1, -41, 0.34], [LOT.x0 + 9, LOT.aisleZ + 0.6, 0.34], [-52, 4.5, 0.38], [55, -5, 0.38]]
+    return pts.map(([x, z, r]) => {
+      const g = new THREE.CircleGeometry(r, 20)
+      g.rotateX(-Math.PI / 2)
+      g.translate(x, 0.011, z)
+      return g
+    })
+  }, [])
+  const coverMat = useMemo(() => new THREE.MeshStandardMaterial({ color: '#3b3d42', roughness: 0.55, metalness: 0.7, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }), [])
   const stencilMat = useMemo(
     () => new THREE.MeshStandardMaterial({ map: stencil, transparent: true, opacity: 0.85, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2, depthWrite: false }),
     [stencil],
@@ -168,6 +182,9 @@ function Markings() {
   return (
     <group>
       <mesh geometry={geo} material={mat} receiveShadow />
+      {covers.map((g, i) => (
+        <mesh key={`c${i}`} geometry={g} material={coverMat} receiveShadow />
+      ))}
       {rings.map((g, i) => (
         <mesh key={i} geometry={g} material={mat} receiveShadow />
       ))}
