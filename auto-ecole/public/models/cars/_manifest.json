@@ -1,0 +1,7 @@
+{
+  "files": [
+    { "file": "peugeot-208.glb", "role": "voiture de l'auto-école", "credit": { "title": "2021 Peugeot 208", "author": "tonielpro520", "license": "CC-BY 4.0", "url": "https://sketchfab.com/3d-models/c3a458884cf7434fa99b2172c96061a4" }, "note": "Décimée et réorganisée (roues séparées, matériaux renommés)." },
+    { "file": "peugeot-308.glb", "role": "trafic", "credit": { "title": "2018 Peugeot 308", "author": "tonielpro520", "license": "CC-BY 4.0", "url": "https://sketchfab.com/3d-models/4676332e370b4333b76ddc9910ceae7e" } },
+    { "file": "peugeot-3008.glb", "role": "trafic", "credit": { "title": "Peugeot 3008", "author": "David_Holiday", "license": "CC-BY 4.0", "url": "https://sketchfab.com/3d-models/3e5e14fdb1f94f25a5b572caf518f55d" } }
+  ]
+}

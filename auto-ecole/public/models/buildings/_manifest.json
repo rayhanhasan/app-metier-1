@@ -1,0 +1,741 @@
+{
+ "conventions": "glTF 2.0 binaire, Y haut, 1 unité = 1 m, origine au sol au centre de l'emprise (largeur × profondeur), façade principale vers +Z, textures WebP ≤ 1024 px (EXT_texture_webp), pas de Draco/meshopt, 1 seul nœud-mesh par fichier",
+ "assemblage": "Pour une rue continue : aligner facade_z_sol (plan avant du RDC, en m depuis l'origine) sur l'alignement et juxtaposer en X avec la largeur. mitoyen_gauche = côté -X aveugle, mitoyen_droit = côté +X aveugle.",
+ "fichiers": [
+  {
+   "fichier": "eglise_couvent_recollets.glb",
+   "type": "monument",
+   "style": "Église gothique + cloître et bâtiments conventuels brique/pierre (Nivelles, Belgique)",
+   "etages": "nef + flèche 45 m",
+   "rez_de_chaussee": "Portail d'église, cloître avec jardin",
+   "dimensions_m": {
+    "largeur_x": 55.88,
+    "profondeur_z": 71.17,
+    "hauteur_y": 45.55
+   },
+   "bbox_three": {
+    "min": [
+     -27.94,
+     0,
+     -35.58
+    ],
+    "max": [
+     27.94,
+     45.55,
+     35.58
+    ]
+   },
+   "facade_z_sol": 35.28,
+   "triangles": 12598,
+   "taille_ko": 2147,
+   "noeud": "eglise_couvent_recollets",
+   "materiaux": [
+    "ssjn",
+    "cloitre",
+    "roof"
+   ],
+   "textures": 6,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": false,
+    "mitoyen_droit": false
+   },
+   "notes": "photo-texturé ; point focal, très grande emprise (56 × 71 m) : à placer en fond de scène",
+   "credit": {
+    "titre": "Couvent des Récollets, Nivelles [Belgium]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/couvent-des-recollets-nivelles-belgium-3ae37297e7df4d3c9d2a8410579e1d03",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "hotel_particulier_brique.glb",
+   "type": "monument",
+   "style": "Hôtel particulier brique et pierre bleue, toit ardoise à lucarnes (Nivelles) : convient en mairie/étude notariale",
+   "etages": "R+1+combles",
+   "rez_de_chaussee": "Porte monumentale en bois, pas de commerce",
+   "dimensions_m": {
+    "largeur_x": 9.92,
+    "profondeur_z": 12.25,
+    "hauteur_y": 11.78
+   },
+   "bbox_three": {
+    "min": [
+     -4.96,
+     0,
+     -6.12
+    ],
+    "max": [
+     4.96,
+     11.78,
+     6.12
+    ]
+   },
+   "facade_z_sol": 5.8,
+   "triangles": 3458,
+   "taille_ko": 426,
+   "noeud": "hotel_particulier_brique",
+   "materiaux": [
+    "material"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé",
+   "credit": {
+    "titre": "Nivelles House 9 [Belgium]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/nivelles-house-9-belgium-9a6bbcb6da704592b368e29b87cac11d",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "immeuble_angers_second_empire.glb",
+   "type": "immeuble",
+   "style": "Second Empire, pierre sculptée, grandes baies cintrées, toit ardoise à lucarnes (Angers)",
+   "etages": "R+2+combles",
+   "rez_de_chaussee": "Commerce vitré moderne (enseigne photo « Vélocité »)",
+   "dimensions_m": {
+    "largeur_x": 10.0,
+    "profondeur_z": 15.29,
+    "hauteur_y": 15.22
+   },
+   "bbox_three": {
+    "min": [
+     -5.0,
+     0,
+     -7.64
+    ],
+    "max": [
+     5.0,
+     15.22,
+     7.64
+    ]
+   },
+   "facade_z_sol": 7.17,
+   "triangles": 1357,
+   "taille_ko": 193,
+   "noeud": "immeuble_angers_second_empire",
+   "materiaux": [
+    "material"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé",
+   "credit": {
+    "titre": "Angers Shop 2 [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/angers-shop-2-france-bbed1d3fdae3493b8f1872c9a9e7e8d4",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "immeuble_besancon_tabac.glb",
+   "type": "immeuble",
+   "style": "Immeuble pierre de Besançon, arcade commerciale, toit tuiles",
+   "etages": "R+2+combles",
+   "rez_de_chaussee": "TABAC PRESSE LOTO sous arcade (photo réelle) + porte verte",
+   "dimensions_m": {
+    "largeur_x": 7.51,
+    "profondeur_z": 8.02,
+    "hauteur_y": 14.57
+   },
+   "bbox_three": {
+    "min": [
+     -3.76,
+     0,
+     -4.01
+    ],
+    "max": [
+     3.76,
+     14.57,
+     4.01
+    ]
+   },
+   "facade_z_sol": 3.71,
+   "triangles": 32066,
+   "taille_ko": 2449,
+   "noeud": "immeuble_besancon_tabac",
+   "materiaux": [
+    "besancon_facade_roof",
+    "toit_1_besancon",
+    "toit_1_besancon_detail",
+    "facade_besancon_window",
+    "facade_besancon",
+    "besancon_facade"
+   ],
+   "textures": 3,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé, 32 k triangles ; la face arrière est une copie miroir de la façade",
+   "credit": {
+    "titre": "French Building - Besancon",
+    "auteur": "hippolyte.bouillard",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/french-building-besancon-11bdab63558f42bc9038133b7ea4f1c6",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "immeuble_bordeaux_angle_banque.glb",
+   "type": "immeuble",
+   "style": "Immeuble d'angle étroit en pierre, mansarde ardoise (Bordeaux)",
+   "etages": "R+3+combles",
+   "rez_de_chaussee": "Agence bancaire sous arcades (enseigne photo)",
+   "dimensions_m": {
+    "largeur_x": 7.72,
+    "profondeur_z": 11.27,
+    "hauteur_y": 18.38
+   },
+   "bbox_three": {
+    "min": [
+     -3.86,
+     0,
+     -5.63
+    ],
+    "max": [
+     3.86,
+     18.38,
+     5.63
+    ]
+   },
+   "facade_z_sol": -2.55,
+   "triangles": 4500,
+   "taille_ko": 747,
+   "noeud": "immeuble_bordeaux_angle_banque",
+   "materiaux": [
+    "material"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": false
+   },
+   "notes": "photo-texturé ; bâtiment d'angle : 2e façade côté +X",
+   "credit": {
+    "titre": "Bordeaux Flat 1 corner [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/bordeaux-flat-1-corner-france-cde0ef76b4ab482bad79d29fe5fb7a88",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "immeuble_bordeaux_pierre_arcades.glb",
+   "type": "immeuble",
+   "style": "Grand immeuble XVIIIe en pierre, arcades au RDC, balconnets, mansarde ardoise (Bordeaux)",
+   "etages": "R+3+combles",
+   "rez_de_chaussee": "Arcades : commerces et portes cochères (7 arches)",
+   "dimensions_m": {
+    "largeur_x": 26.8,
+    "profondeur_z": 11.21,
+    "hauteur_y": 18.58
+   },
+   "bbox_three": {
+    "min": [
+     -13.4,
+     0,
+     -5.6
+    ],
+    "max": [
+     13.4,
+     18.58,
+     5.6
+    ]
+   },
+   "facade_z_sol": 5.5,
+   "triangles": 2408,
+   "taille_ko": 589,
+   "noeud": "immeuble_bordeaux_pierre_arcades",
+   "materiaux": [
+    "material"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": false,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé ; bout d'îlot : pignon pierre côté -X (toit en croupe), mitoyen côté +X",
+   "credit": {
+    "titre": "Bordeaux Flat 2 corner [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/bordeaux-flat-2-corner-france-d390f8d7c3064060b03a753ec02c1da1",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "immeuble_brique_tabac.glb",
+   "type": "immeuble",
+   "style": "Immeuble brique et pierre (type Nord/1900), balconnets, mansarde ardoise",
+   "etages": "R+3+combles",
+   "rez_de_chaussee": "TABAC PRESSE (devanture bleu nuit, carotte rouge émissive) + porte d'immeuble",
+   "dimensions_m": {
+    "largeur_x": 8.7,
+    "profondeur_z": 11.02,
+    "hauteur_y": 18.53
+   },
+   "bbox_three": {
+    "min": [
+     -4.35,
+     0,
+     -5.2
+    ],
+    "max": [
+     4.35,
+     18.53,
+     5.82
+    ]
+   },
+   "facade_z_sol": 5.2,
+   "triangles": 2094,
+   "taille_ko": 874,
+   "noeud": "immeuble_brique_tabac",
+   "materiaux": [
+    "mur_facade",
+    "pierre_modenature",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "enseigne_carotte_rouge",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "toit_zinc",
+    "enduit_pignon",
+    "toit_ardoise",
+    "terre_cuite"
+   ],
+   "textures": 9,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "procédural ; matériau « ferronnerie_alpha » en alphaMode MASK (cutoff 0.3, double face) ; enseignes dans l'atlas « atlas_peinture »",
+   "credit": {
+    "titre": "immeuble_brique_tabac",
+    "auteur": "Génération procédurale (Blender Python) pour ce projet",
+    "licence": "CC0 (géométrie originale)",
+    "url": "https://polyhaven.com/textures",
+    "textures": "Textures Poly Haven (CC0) : sandstone_blocks_08, painted_plaster_wall, white_plaster_02, red_brick_03, roof_slates_03, plaster_grey_04 — https://polyhaven.com"
+   }
+  },
+  {
+   "fichier": "immeuble_enduit_auto_ecole.glb",
+   "type": "immeuble",
+   "style": "Petit immeuble enduit ocre clair, volets, mansarde zinc",
+   "etages": "R+2+combles",
+   "rez_de_chaussee": "AUTO-ÉCOLE (devanture bleue, enseigne générique) + porte d'immeuble",
+   "dimensions_m": {
+    "largeur_x": 10.3,
+    "profondeur_z": 10.66,
+    "hauteur_y": 15.63
+   },
+   "bbox_three": {
+    "min": [
+     -5.15,
+     0,
+     -5.2
+    ],
+    "max": [
+     5.15,
+     15.63,
+     5.46
+    ]
+   },
+   "facade_z_sol": 5.2,
+   "triangles": 2278,
+   "taille_ko": 557,
+   "noeud": "immeuble_enduit_auto_ecole",
+   "materiaux": [
+    "mur_facade",
+    "pierre_modenature",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "volets",
+    "toit_zinc",
+    "enduit_pignon",
+    "terre_cuite"
+   ],
+   "textures": 7,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "procédural ; matériau « ferronnerie_alpha » en alphaMode MASK (cutoff 0.3, double face) ; enseignes dans l'atlas « atlas_peinture »",
+   "credit": {
+    "titre": "immeuble_enduit_auto_ecole",
+    "auteur": "Génération procédurale (Blender Python) pour ce projet",
+    "licence": "CC0 (géométrie originale)",
+    "url": "https://polyhaven.com/textures",
+    "textures": "Textures Poly Haven (CC0) : sandstone_blocks_08, painted_plaster_wall, white_plaster_02, red_brick_03, roof_slates_03, plaster_grey_04 — https://polyhaven.com"
+   }
+  },
+  {
+   "fichier": "immeuble_enduit_boulangerie_pharmacie.glb",
+   "type": "immeuble",
+   "style": "Immeuble de rapport enduit clair, encadrements pierre, volets gris-bleu, mansarde ardoise",
+   "etages": "R+3+combles",
+   "rez_de_chaussee": "BOULANGERIE (devanture ocre, store) + porte d'immeuble + PHARMACIE (devanture blanche, croix verte émissive)",
+   "dimensions_m": {
+    "largeur_x": 11.7,
+    "profondeur_z": 11.95,
+    "hauteur_y": 18.63
+   },
+   "bbox_three": {
+    "min": [
+     -5.85,
+     0,
+     -5.2
+    ],
+    "max": [
+     5.85,
+     18.63,
+     6.75
+    ]
+   },
+   "facade_z_sol": 6.75,
+   "triangles": 2964,
+   "taille_ko": 800,
+   "noeud": "immeuble_enduit_boulangerie_pharmacie",
+   "materiaux": [
+    "mur_facade",
+    "pierre_modenature",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "store_banne_0",
+    "devanture_2",
+    "enseigne_croix_verte",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "volets",
+    "toit_zinc",
+    "enduit_pignon",
+    "toit_ardoise",
+    "terre_cuite"
+   ],
+   "textures": 9,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "procédural ; matériau « ferronnerie_alpha » en alphaMode MASK (cutoff 0.3, double face) ; enseignes dans l'atlas « atlas_peinture »",
+   "credit": {
+    "titre": "immeuble_enduit_boulangerie_pharmacie",
+    "auteur": "Génération procédurale (Blender Python) pour ce projet",
+    "licence": "CC0 (géométrie originale)",
+    "url": "https://polyhaven.com/textures",
+    "textures": "Textures Poly Haven (CC0) : sandstone_blocks_08, painted_plaster_wall, white_plaster_02, red_brick_03, roof_slates_03, plaster_grey_04 — https://polyhaven.com"
+   }
+  },
+  {
+   "fichier": "immeuble_haussmannien_brasserie.glb",
+   "type": "immeuble",
+   "style": "Haussmannien pierre de taille, balcons filants fer forgé, comble mansardé zinc, lucarnes",
+   "etages": "R+4+combles",
+   "rez_de_chaussee": "Brasserie « BRASSERIE DU CENTRE » (devanture bordeaux, store banne rouge) + porte cochère bleue",
+   "dimensions_m": {
+    "largeur_x": 15.7,
+    "profondeur_z": 12.95,
+    "hauteur_y": 22.73
+   },
+   "bbox_three": {
+    "min": [
+     -7.85,
+     0,
+     -5.7
+    ],
+    "max": [
+     7.85,
+     22.73,
+     7.25
+    ]
+   },
+   "facade_z_sol": 7.25,
+   "triangles": 4066,
+   "taille_ko": 473,
+   "noeud": "immeuble_haussmannien_brasserie",
+   "materiaux": [
+    "mur_facade",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "store_banne_0",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "toit_zinc",
+    "enduit_pignon",
+    "terre_cuite"
+   ],
+   "textures": 6,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "procédural ; matériau « ferronnerie_alpha » en alphaMode MASK (cutoff 0.3, double face) ; enseignes dans l'atlas « atlas_peinture »",
+   "credit": {
+    "titre": "immeuble_haussmannien_brasserie",
+    "auteur": "Génération procédurale (Blender Python) pour ce projet",
+    "licence": "CC0 (géométrie originale)",
+    "url": "https://polyhaven.com/textures",
+    "textures": "Textures Poly Haven (CC0) : sandstone_blocks_08, painted_plaster_wall, white_plaster_02, red_brick_03, roof_slates_03, plaster_grey_04 — https://polyhaven.com"
+   }
+  },
+  {
+   "fichier": "immeuble_laval_granit_commerce.glb",
+   "type": "immeuble",
+   "style": "Immeuble de ville en granit, toit ardoise à 2 pans (Laval)",
+   "etages": "R+3+combles",
+   "rez_de_chaussee": "Devanture bois ancienne vitrée + porte",
+   "dimensions_m": {
+    "largeur_x": 8.03,
+    "profondeur_z": 8.94,
+    "hauteur_y": 15.78
+   },
+   "bbox_three": {
+    "min": [
+     -4.02,
+     0,
+     -4.47
+    ],
+    "max": [
+     4.02,
+     15.78,
+     4.47
+    ]
+   },
+   "facade_z_sol": 4.39,
+   "triangles": 931,
+   "taille_ko": 162,
+   "noeud": "immeuble_laval_granit_commerce",
+   "materiaux": [
+    "Material"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé",
+   "credit": {
+    "titre": "Laval Shop 1 [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/laval-shop-1-france-ab4bdb1830e142148121d3a6e876cdb7",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "maison_bourges_colombages_angle.glb",
+   "type": "maison de ville",
+   "style": "Maison à pans de bois sur rue, pignon en façade (Bourges)",
+   "etages": "R+2+combles",
+   "rez_de_chaussee": "Restaurant, devanture rouge (retour sur le côté +X)",
+   "dimensions_m": {
+    "largeur_x": 8.48,
+    "profondeur_z": 9.83,
+    "hauteur_y": 16.45
+   },
+   "bbox_three": {
+    "min": [
+     -4.24,
+     0,
+     -4.92
+    ],
+    "max": [
+     4.24,
+     16.45,
+     4.92
+    ]
+   },
+   "facade_z_sol": -4.49,
+   "triangles": 1305,
+   "taille_ko": 380,
+   "noeud": "maison_bourges_colombages_angle",
+   "materiaux": [
+    "corner"
+   ],
+   "textures": 1,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": false
+   },
+   "notes": "photo-texturé ; bâtiment d'angle : 2e façade côté +X",
+   "credit": {
+    "titre": "Bourges Corner Shop 1 [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/bourges-corner-shop-1-france-63b23c3e5cd2461f8e3426b35fec72d9",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "maison_dijon_colombages.glb",
+   "type": "maison de ville",
+   "style": "Maison à colombages, rez-de-chaussée pierre, tuiles plates (Dijon)",
+   "etages": "R+1+combles",
+   "rez_de_chaussee": "Portes cochères en bois",
+   "dimensions_m": {
+    "largeur_x": 8.05,
+    "profondeur_z": 10.12,
+    "hauteur_y": 11.5
+   },
+   "bbox_three": {
+    "min": [
+     -4.03,
+     0,
+     -5.06
+    ],
+    "max": [
+     4.03,
+     11.5,
+     5.06
+    ]
+   },
+   "facade_z_sol": 4.76,
+   "triangles": 511,
+   "taille_ko": 248,
+   "noeud": "maison_dijon_colombages",
+   "materiaux": [
+    "2_2.0"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé",
+   "credit": {
+    "titre": "Dijon Shop 2 [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/dijon-shop-2-france-ae5cf8480ecb4592ab876f56f48b9f70",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "maison_guingamp_pierre_commerce.glb",
+   "type": "maison de ville",
+   "style": "Maison de ville en moellons, toit ardoise (Guingamp)",
+   "etages": "R+2+combles",
+   "rez_de_chaussee": "Petite devanture blanche fermée",
+   "dimensions_m": {
+    "largeur_x": 6.93,
+    "profondeur_z": 6.54,
+    "hauteur_y": 14.72
+   },
+   "bbox_three": {
+    "min": [
+     -3.47,
+     0,
+     -3.27
+    ],
+    "max": [
+     3.47,
+     14.72,
+     3.27
+    ]
+   },
+   "facade_z_sol": 2.89,
+   "triangles": 542,
+   "taille_ko": 613,
+   "noeud": "maison_guingamp_pierre_commerce",
+   "materiaux": [
+    "Guincamp_1"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": true,
+    "mitoyen_droit": true
+   },
+   "notes": "photo-texturé",
+   "credit": {
+    "titre": "Guingamp Shop 1 [France]",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/guingamp-shop-1-france-8bf9f75a6aeb4b77b195cbc55f21edb8",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  },
+  {
+   "fichier": "maison_le_mans_angle_jardin.glb",
+   "type": "maison de ville",
+   "style": "Maison bourgeoise enduite, toit ardoise à croupes, véranda et mur de jardin (Le Mans)",
+   "etages": "R+1+combles",
+   "rez_de_chaussee": "Porte verte, mur de clôture en pierre (jardin côté -X)",
+   "dimensions_m": {
+    "largeur_x": 22.23,
+    "profondeur_z": 7.46,
+    "hauteur_y": 11.07
+   },
+   "bbox_three": {
+    "min": [
+     -11.11,
+     0,
+     -3.73
+    ],
+    "max": [
+     11.11,
+     11.07,
+     3.73
+    ]
+   },
+   "facade_z_sol": 3.55,
+   "triangles": 1433,
+   "taille_ko": 196,
+   "noeud": "maison_le_mans_angle_jardin",
+   "materiaux": [
+    "Material.001"
+   ],
+   "textures": 2,
+   "animations": [],
+   "cotes_aveugles": {
+    "mitoyen_gauche": false,
+    "mitoyen_droit": false
+   },
+   "notes": "photo-texturé ; maison isolée avec jardin clos, non mitoyenne",
+   "credit": {
+    "titre": "Le Mans Corner",
+    "auteur": "Lost Gecko",
+    "licence": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/le-mans-corner-57c557e5881d4268a62b985de51372a8",
+    "modifications": "recentrage, mise à l'échelle, textures converties en WebP, matériau simplifié (métal/rugosité)"
+   }
+  }
+ ],
+ "total_mo": 11.11
+}

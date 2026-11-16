@@ -1,0 +1,1286 @@
+{
+ "cars": [
+  {
+   "file": "cars/peugeot-208",
+   "size": [
+    1.89,
+    1.58,
+    4.05
+   ],
+   "min": [
+    -0.95,
+    0,
+    -1.95
+   ],
+   "nodes": [
+    "body",
+    "wheel_FL",
+    "wheel_FR",
+    "wheel_RL",
+    "wheel_RR"
+   ],
+   "materials": [
+    "brake",
+    "light_turn",
+    "chrome",
+    "glass",
+    "interior",
+    "lens",
+    "light_front",
+    "light_rear",
+    "paint",
+    "reflector",
+    "trim",
+    "rim",
+    "rim_dark",
+    "tire"
+   ],
+   "credit": "2021 Peugeot 208 · tonielpro520 · CC-BY 4.0 · https://sketchfab.com/3d-models/c3a458884cf7434fa99b2172c96061a4"
+  },
+  {
+   "file": "cars/peugeot-3008",
+   "size": [
+    2.1,
+    1.64,
+    4.45
+   ],
+   "min": [
+    -1.04,
+    0,
+    -2.18
+   ],
+   "nodes": [
+    "body",
+    "wheel_FL",
+    "wheel_FR",
+    "wheel_RL",
+    "wheel_RR"
+   ],
+   "materials": [
+    "chrome",
+    "glass",
+    "interior",
+    "lens",
+    "light_front",
+    "light_rear",
+    "paint",
+    "trim",
+    "brake",
+    "rim",
+    "rim_dark",
+    "tire"
+   ],
+   "credit": "Peugeot 3008 · David_Holiday · CC-BY 4.0 · https://sketchfab.com/3d-models/3e5e14fdb1f94f25a5b572caf518f55d"
+  },
+  {
+   "file": "cars/peugeot-308",
+   "size": [
+    1.78,
+    1.71,
+    4.25
+   ],
+   "min": [
+    -0.89,
+    0,
+    -2.08
+   ],
+   "nodes": [
+    "body",
+    "wheel_FL",
+    "wheel_FR",
+    "wheel_RL",
+    "wheel_RR"
+   ],
+   "materials": [
+    "brake",
+    "chrome",
+    "glass",
+    "interior",
+    "light_front",
+    "light_rear",
+    "paint",
+    "trim",
+    "rim",
+    "rim_dark",
+    "tire"
+   ],
+   "credit": "2018 Peugeot 308 · tonielpro520 · CC-BY 4.0 · https://sketchfab.com/3d-models/4676332e370b4333b76ddc9910ceae7e"
+  }
+ ],
+ "people": [
+  {
+   "file": "people/person-01",
+   "size": [
+    1.13,
+    1.77,
+    0.22
+   ],
+   "min": [
+    -0.57,
+    0,
+    -0.11
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [],
+   "materials": [
+    "ManMaterial",
+    "Hair"
+   ],
+   "credit": "Low-poly Man · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-man-7b93db2d46d847f191cf5e841b322856"
+  },
+  {
+   "file": "people/person-02",
+   "size": [
+    1.47,
+    1.8,
+    0.24
+   ],
+   "min": [
+    -0.74,
+    0,
+    -0.12
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [],
+   "materials": [
+    "ManCasual2Material"
+   ],
+   "credit": "Low-poly Man Casual Clothes 2 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-man-casual-clothes-2-4a834adf1e33405c979e94555e7955c6"
+  },
+  {
+   "file": "people/person-03",
+   "size": [
+    1.45,
+    1.76,
+    0.24
+   ],
+   "min": [
+    -0.72,
+    0,
+    -0.12
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [],
+   "materials": [
+    "Material"
+   ],
+   "credit": "Low-poly Man Casual Clothes 5 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-man-casual-clothes-5-2cb8c4b198e64a92b4bc9d32a0f2973d"
+  },
+  {
+   "file": "people/person-04",
+   "size": [
+    0.78,
+    1.65,
+    0.2
+   ],
+   "min": [
+    -0.39,
+    0,
+    -0.1
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [],
+   "materials": [
+    "skin",
+    "hh",
+    "shorts",
+    "blouse",
+    "hair"
+   ],
+   "credit": "Low-poly Woman · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-woman-752778128b9a4b578586dbce40c0366f"
+  },
+  {
+   "file": "people/person-05",
+   "size": [
+    1.42,
+    1.69,
+    0.28
+   ],
+   "min": [
+    -0.71,
+    0,
+    -0.14
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [],
+   "materials": [
+    "WomanCasual2Material"
+   ],
+   "credit": "Low-poly Woman Casual 2 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-woman-casual-2-7b127f7a90e645eca0a3a48f056fc928"
+  },
+  {
+   "file": "people/person-06",
+   "size": [
+    1.39,
+    1.66,
+    0.25
+   ],
+   "min": [
+    -0.7,
+    0,
+    -0.13
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [],
+   "materials": [
+    "WomanCasual3Material"
+   ],
+   "credit": "Low-poly Woman Casual 3 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-woman-casual-3-b71bf9a6065c4836b291258f1d8587b9"
+  }
+ ],
+ "buildings": [
+  {
+   "file": "buildings/eglise_couvent_recollets",
+   "size": [
+    55.88,
+    45.55,
+    71.17
+   ],
+   "min": [
+    -27.94,
+    0,
+    -35.58
+   ],
+   "nodes": [],
+   "materials": [
+    "ssjn",
+    "cloitre",
+    "roof"
+   ],
+   "tags": [
+    "monument"
+   ],
+   "credit": "Couvent des Récollets, Nivelles [Belgium] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/couvent-des-recollets-nivelles-belgium-3ae37297e7df4d3c9d2a8410579e1d03"
+  },
+  {
+   "file": "buildings/hotel_particulier_brique",
+   "size": [
+    9.92,
+    11.78,
+    12.25
+   ],
+   "min": [
+    -4.96,
+    0,
+    -6.12
+   ],
+   "nodes": [],
+   "materials": [
+    "material"
+   ],
+   "tags": [
+    "monument",
+    "shop"
+   ],
+   "credit": "Nivelles House 9 [Belgium] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/nivelles-house-9-belgium-9a6bbcb6da704592b368e29b87cac11d"
+  },
+  {
+   "file": "buildings/immeuble_angers_second_empire",
+   "size": [
+    10,
+    15.22,
+    15.29
+   ],
+   "min": [
+    -5,
+    0,
+    -7.64
+   ],
+   "nodes": [],
+   "materials": [
+    "material"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "Angers Shop 2 [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/angers-shop-2-france-bbed1d3fdae3493b8f1872c9a9e7e8d4"
+  },
+  {
+   "file": "buildings/immeuble_besancon_tabac",
+   "size": [
+    7.51,
+    14.57,
+    8.02
+   ],
+   "min": [
+    -3.76,
+    0,
+    -4.01
+   ],
+   "nodes": [],
+   "materials": [
+    "besancon_facade_roof",
+    "toit_1_besancon",
+    "toit_1_besancon_detail",
+    "facade_besancon_window",
+    "facade_besancon",
+    "besancon_facade"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "French Building - Besancon · hippolyte.bouillard · CC-BY 4.0 · https://sketchfab.com/3d-models/french-building-besancon-11bdab63558f42bc9038133b7ea4f1c6"
+  },
+  {
+   "file": "buildings/immeuble_bordeaux_angle_banque",
+   "size": [
+    7.72,
+    18.38,
+    11.27
+   ],
+   "min": [
+    -3.86,
+    0,
+    -5.63
+   ],
+   "nodes": [],
+   "materials": [
+    "material"
+   ],
+   "credit": "Bordeaux Flat 1 corner [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/bordeaux-flat-1-corner-france-cde0ef76b4ab482bad79d29fe5fb7a88"
+  },
+  {
+   "file": "buildings/immeuble_bordeaux_pierre_arcades",
+   "size": [
+    26.8,
+    18.58,
+    11.21
+   ],
+   "min": [
+    -13.4,
+    0,
+    -5.6
+   ],
+   "nodes": [],
+   "materials": [
+    "material"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "Bordeaux Flat 2 corner [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/bordeaux-flat-2-corner-france-d390f8d7c3064060b03a753ec02c1da1"
+  },
+  {
+   "file": "buildings/immeuble_brique_tabac",
+   "size": [
+    8.7,
+    18.53,
+    11.02
+   ],
+   "min": [
+    -4.35,
+    0,
+    -5.2
+   ],
+   "nodes": [],
+   "materials": [
+    "mur_facade",
+    "pierre_modenature",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "enseigne_carotte_rouge",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "toit_zinc",
+    "enduit_pignon",
+    "toit_ardoise",
+    "terre_cuite"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "immeuble_brique_tabac · Génération procédurale (Blender Python) pour ce projet · CC0 (géométrie originale) · https://polyhaven.com/textures"
+  },
+  {
+   "file": "buildings/immeuble_enduit_auto_ecole",
+   "size": [
+    10.3,
+    15.63,
+    10.66
+   ],
+   "min": [
+    -5.15,
+    0,
+    -5.2
+   ],
+   "nodes": [],
+   "materials": [
+    "mur_facade",
+    "pierre_modenature",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "volets",
+    "toit_zinc",
+    "enduit_pignon",
+    "terre_cuite"
+   ],
+   "credit": "immeuble_enduit_auto_ecole · Génération procédurale (Blender Python) pour ce projet · CC0 (géométrie originale) · https://polyhaven.com/textures"
+  },
+  {
+   "file": "buildings/immeuble_enduit_boulangerie_pharmacie",
+   "size": [
+    11.7,
+    18.63,
+    11.95
+   ],
+   "min": [
+    -5.85,
+    0,
+    -5.2
+   ],
+   "nodes": [],
+   "materials": [
+    "mur_facade",
+    "pierre_modenature",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "store_banne_0",
+    "devanture_2",
+    "enseigne_croix_verte",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "volets",
+    "toit_zinc"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "immeuble_enduit_boulangerie_pharmacie · Génération procédurale (Blender Python) pour ce projet · CC0 (géométrie originale) · https://polyhaven.com/textures"
+  },
+  {
+   "file": "buildings/immeuble_haussmannien_brasserie",
+   "size": [
+    15.7,
+    22.73,
+    12.95
+   ],
+   "min": [
+    -7.85,
+    0,
+    -5.7
+   ],
+   "nodes": [],
+   "materials": [
+    "mur_facade",
+    "devanture_0",
+    "atlas_peinture",
+    "vitrage",
+    "ferronnerie",
+    "laiton",
+    "store_banne_0",
+    "menuiserie",
+    "ferronnerie_alpha",
+    "toit_zinc",
+    "enduit_pignon",
+    "terre_cuite"
+   ],
+   "tags": [
+    "cafe",
+    "shop"
+   ],
+   "credit": "immeuble_haussmannien_brasserie · Génération procédurale (Blender Python) pour ce projet · CC0 (géométrie originale) · https://polyhaven.com/textures"
+  },
+  {
+   "file": "buildings/immeuble_laval_granit_commerce",
+   "size": [
+    8.03,
+    15.78,
+    8.94
+   ],
+   "min": [
+    -4.02,
+    0,
+    -4.47
+   ],
+   "nodes": [],
+   "materials": [
+    "Material"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "Laval Shop 1 [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/laval-shop-1-france-ab4bdb1830e142148121d3a6e876cdb7"
+  },
+  {
+   "file": "buildings/maison_bourges_colombages_angle",
+   "size": [
+    8.48,
+    16.45,
+    9.83
+   ],
+   "min": [
+    -4.24,
+    0,
+    -4.92
+   ],
+   "nodes": [],
+   "materials": [
+    "corner"
+   ],
+   "tags": [
+    "cafe",
+    "shop"
+   ],
+   "credit": "Bourges Corner Shop 1 [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/bourges-corner-shop-1-france-63b23c3e5cd2461f8e3426b35fec72d9"
+  },
+  {
+   "file": "buildings/maison_dijon_colombages",
+   "size": [
+    8.05,
+    11.5,
+    10.12
+   ],
+   "min": [
+    -4.03,
+    0,
+    -5.06
+   ],
+   "nodes": [],
+   "materials": [
+    "2_2.0"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "Dijon Shop 2 [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/dijon-shop-2-france-ae5cf8480ecb4592ab876f56f48b9f70"
+  },
+  {
+   "file": "buildings/maison_guingamp_pierre_commerce",
+   "size": [
+    6.93,
+    14.72,
+    6.54
+   ],
+   "min": [
+    -3.47,
+    0,
+    -3.27
+   ],
+   "nodes": [],
+   "materials": [
+    "Guincamp_1"
+   ],
+   "tags": [
+    "shop"
+   ],
+   "credit": "Guingamp Shop 1 [France] · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/guingamp-shop-1-france-8bf9f75a6aeb4b77b195cbc55f21edb8"
+  },
+  {
+   "file": "buildings/maison_le_mans_angle_jardin",
+   "size": [
+    22.23,
+    11.07,
+    7.46
+   ],
+   "min": [
+    -11.11,
+    0,
+    -3.73
+   ],
+   "nodes": [],
+   "materials": [
+    "Material.001"
+   ],
+   "credit": "Le Mans Corner · Lost Gecko · CC-BY 4.0 · https://sketchfab.com/3d-models/le-mans-corner-57c557e5881d4268a62b985de51372a8"
+  }
+ ],
+ "props": [
+  {
+   "file": "props/bench",
+   "size": [
+    1.8,
+    0.8,
+    0.86
+   ],
+   "min": [
+    -0.9,
+    0,
+    -0.43
+   ],
+   "nodes": [],
+   "materials": [
+    "bench"
+   ]
+  },
+  {
+   "file": "props/bike-rack",
+   "size": [
+    1.73,
+    0.84,
+    0.85
+   ],
+   "min": [
+    -0.87,
+    0,
+    -0.43
+   ],
+   "nodes": [],
+   "materials": [
+    "steel"
+   ]
+  },
+  {
+   "file": "props/bollard",
+   "size": [
+    0.15,
+    1.11,
+    0.15
+   ],
+   "min": [
+    -0.08,
+    0,
+    -0.07
+   ],
+   "nodes": [],
+   "materials": [
+    "bollard_metal"
+   ]
+  },
+  {
+   "file": "props/bus-shelter",
+   "size": [
+    4.5,
+    2.57,
+    1.75
+   ],
+   "min": [
+    -2.25,
+    0,
+    -0.83
+   ],
+   "nodes": [],
+   "materials": [
+    "shelter_frame",
+    "glass",
+    "poster",
+    "wood_light"
+   ]
+  },
+  {
+   "file": "props/cafe-chair",
+   "size": [
+    0.57,
+    0.86,
+    0.66
+   ],
+   "min": [
+    -0.29,
+    0,
+    -0.33
+   ],
+   "nodes": [],
+   "materials": [
+    "cafe_chair"
+   ]
+  },
+  {
+   "file": "props/cafe-table",
+   "size": [
+    0.69,
+    0.73,
+    0.69
+   ],
+   "min": [
+    -0.35,
+    0,
+    -0.35
+   ],
+   "nodes": [],
+   "materials": [
+    "cafe_table"
+   ]
+  },
+  {
+   "file": "props/chair",
+   "size": [
+    0.57,
+    1.01,
+    0.68
+   ],
+   "min": [
+    -0.28,
+    0,
+    -0.34
+   ],
+   "nodes": [],
+   "materials": [
+    "chair"
+   ]
+  },
+  {
+   "file": "props/desk",
+   "size": [
+    1.6,
+    0.75,
+    0.8
+   ],
+   "min": [
+    -0.8,
+    0,
+    -0.4
+   ],
+   "nodes": [],
+   "materials": [
+    "wood_light",
+    "desk_metal",
+    "desk_handle"
+   ]
+  },
+  {
+   "file": "props/fire-hydrant",
+   "size": [
+    0.38,
+    0.93,
+    0.36
+   ],
+   "min": [
+    -0.19,
+    0,
+    -0.15
+   ],
+   "nodes": [],
+   "materials": [
+    "hydrant_red"
+   ]
+  },
+  {
+   "file": "props/hedge-01",
+   "size": [
+    2,
+    1.25,
+    0.75
+   ],
+   "min": [
+    -0.99,
+    0,
+    -0.36
+   ],
+   "nodes": [],
+   "materials": [
+    "shrub_core",
+    "leaves"
+   ]
+  },
+  {
+   "file": "props/monitor",
+   "size": [
+    0.55,
+    0.46,
+    0.19
+   ],
+   "min": [
+    -0.27,
+    0,
+    -0.13
+   ],
+   "nodes": [],
+   "materials": [
+    "monitor_body",
+    "screen"
+   ]
+  },
+  {
+   "file": "props/office-chair",
+   "size": [
+    0.72,
+    0.97,
+    0.76
+   ],
+   "min": [
+    -0.36,
+    0,
+    -0.38
+   ],
+   "nodes": [],
+   "materials": [
+    "office_chair"
+   ]
+  },
+  {
+   "file": "props/parasol",
+   "size": [
+    2.68,
+    2.63,
+    2.68
+   ],
+   "min": [
+    -1.34,
+    0,
+    -1.34
+   ],
+   "nodes": [],
+   "materials": [
+    "parasol_pole",
+    "parasol_fabric"
+   ]
+  },
+  {
+   "file": "props/pedestrian-light",
+   "size": [
+    0.25,
+    2.54,
+    0.43
+   ],
+   "min": [
+    -0.13,
+    0,
+    -0.09
+   ],
+   "nodes": [],
+   "materials": [
+    "tl_pole",
+    "tl_body",
+    "light_red",
+    "light_green"
+   ]
+  },
+  {
+   "file": "props/plant-pot",
+   "size": [
+    0.88,
+    1.05,
+    0.82
+   ],
+   "min": [
+    -0.44,
+    0,
+    -0.41
+   ],
+   "nodes": [],
+   "materials": [
+    "plant_pot",
+    "plant_leaves"
+   ]
+  },
+  {
+   "file": "props/planter",
+   "size": [
+    1.09,
+    1.47,
+    1.11
+   ],
+   "min": [
+    -0.53,
+    0,
+    -0.57
+   ],
+   "nodes": [],
+   "materials": [
+    "planter",
+    "soil",
+    "leaves"
+   ]
+  },
+  {
+   "file": "props/reception-counter",
+   "size": [
+    2.26,
+    1.12,
+    0.74
+   ],
+   "min": [
+    -1.13,
+    0,
+    -0.35
+   ],
+   "nodes": [],
+   "materials": [
+    "counter_white",
+    "counter_dark",
+    "wood_light"
+   ]
+  },
+  {
+   "file": "props/shelf",
+   "size": [
+    1.08,
+    1.56,
+    0.37
+   ],
+   "min": [
+    -0.54,
+    0,
+    -0.19
+   ],
+   "nodes": [],
+   "materials": [
+    "shelf"
+   ]
+  },
+  {
+   "file": "props/shrub-01",
+   "size": [
+    1.35,
+    1.15,
+    1.4
+   ],
+   "min": [
+    -0.7,
+    0,
+    -0.72
+   ],
+   "nodes": [],
+   "materials": [
+    "shrub_core",
+    "leaves"
+   ]
+  },
+  {
+   "file": "props/sign-no-entry",
+   "size": [
+    0.65,
+    2.98,
+    0.1
+   ],
+   "min": [
+    -0.32,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sign-parking",
+   "size": [
+    0.6,
+    2.93,
+    0.1
+   ],
+   "min": [
+    -0.3,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sign-pedestrian-crossing",
+   "size": [
+    0.6,
+    2.93,
+    0.1
+   ],
+   "min": [
+    -0.3,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sign-roundabout",
+   "size": [
+    0.75,
+    2.99,
+    0.1
+   ],
+   "min": [
+    -0.37,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sign-speed-30",
+   "size": [
+    0.65,
+    2.98,
+    0.1
+   ],
+   "min": [
+    -0.32,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sign-stop",
+   "size": [
+    0.7,
+    3.03,
+    0.1
+   ],
+   "min": [
+    -0.35,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sign-yield",
+   "size": [
+    0.75,
+    2.99,
+    0.1
+   ],
+   "min": [
+    -0.37,
+    0,
+    -0.03
+   ],
+   "nodes": [],
+   "materials": [
+    "sign"
+   ]
+  },
+  {
+   "file": "props/sofa",
+   "size": [
+    1.81,
+    0.71,
+    0.82
+   ],
+   "min": [
+    -0.9,
+    0,
+    -0.41
+   ],
+   "nodes": [],
+   "materials": [
+    "sofa"
+   ]
+  },
+  {
+   "file": "props/street-lamp",
+   "size": [
+    0.34,
+    7.15,
+    1.86
+   ],
+   "min": [
+    -0.17,
+    0,
+    -0.17
+   ],
+   "nodes": [],
+   "materials": [
+    "lamp_metal",
+    "lamp"
+   ]
+  },
+  {
+   "file": "props/traffic-cone",
+   "size": [
+    0.3,
+    0.5,
+    0.3
+   ],
+   "min": [
+    -0.15,
+    0,
+    -0.15
+   ],
+   "nodes": [],
+   "materials": [
+    "cone_orange",
+    "cone_white"
+   ]
+  },
+  {
+   "file": "props/traffic-light",
+   "size": [
+    0.3,
+    3.18,
+    0.56
+   ],
+   "min": [
+    -0.15,
+    0,
+    -0.11
+   ],
+   "nodes": [],
+   "materials": [
+    "tl_pole",
+    "tl_body",
+    "light_red",
+    "light_orange",
+    "light_green"
+   ]
+  },
+  {
+   "file": "props/trash-bin",
+   "size": [
+    0.47,
+    1.01,
+    0.47
+   ],
+   "min": [
+    -0.23,
+    0,
+    -0.23
+   ],
+   "nodes": [],
+   "materials": [
+    "bin_green",
+    "bin_inner"
+   ]
+  },
+  {
+   "file": "props/tree-01",
+   "size": [
+    6.94,
+    8.8,
+    6.71
+   ],
+   "min": [
+    -3.54,
+    0,
+    -3.23
+   ],
+   "nodes": [],
+   "materials": [
+    "bark",
+    "leaves"
+   ]
+  },
+  {
+   "file": "props/tree-02",
+   "size": [
+    4.46,
+    7.4,
+    4.58
+   ],
+   "min": [
+    -2.24,
+    0,
+    -2.37
+   ],
+   "nodes": [],
+   "materials": [
+    "bark",
+    "leaves"
+   ]
+  },
+  {
+   "file": "props/tree-03",
+   "size": [
+    5.23,
+    6.2,
+    5.15
+   ],
+   "min": [
+    -2.8,
+    0,
+    -2.4
+   ],
+   "nodes": [],
+   "materials": [
+    "bark",
+    "leaves"
+   ]
+  },
+  {
+   "file": "props/tv-screen",
+   "size": [
+    1.46,
+    0.84,
+    0.07
+   ],
+   "min": [
+    -0.73,
+    0,
+    0
+   ],
+   "nodes": [],
+   "materials": [
+    "tv_body",
+    "screen"
+   ]
+  },
+  {
+   "file": "props/water-dispenser",
+   "size": [
+    0.32,
+    1.38,
+    0.41
+   ],
+   "min": [
+    -0.16,
+    0,
+    -0.17
+   ],
+   "nodes": [],
+   "materials": [
+    "dispenser_white",
+    "dispenser_dark",
+    "tap_2a6",
+    "tap_c93",
+    "water"
+   ]
+  }
+ ]
+}

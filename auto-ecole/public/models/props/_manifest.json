@@ -1,0 +1,901 @@
+{
+ "conventions": "1 unité = 1 m, Y vers le haut, origine au sol au centre, avant vers +Z, un seul maillage par objet, textures WebP/PNG <= 1024 px, pas de Draco.",
+ "models": {
+  "bench": {
+   "file": "bench.glb",
+   "dimensions_m": {
+    "x": 1.8,
+    "y": 0.798,
+    "z": 0.86
+   },
+   "triangles": 1640,
+   "size_kb": 246.1,
+   "nodes": [
+    "bench"
+   ],
+   "materials": [
+    "bench"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Park Bech Low-poly",
+    "author": "MaX3Dd",
+    "license": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/park-bech-low-poly-d9014318124c4013a3bd49cfd69e8b77"
+   },
+   "notes": "Banc public fonte + lattes bois."
+  },
+  "bike-rack": {
+   "file": "bike-rack.glb",
+   "dimensions_m": {
+    "x": 1.73,
+    "y": 0.843,
+    "z": 0.85
+   },
+   "triangles": 1272,
+   "size_kb": 52.5,
+   "nodes": [
+    "bike-rack"
+   ],
+   "materials": [
+    "steel"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Trois arceaux espacés de 0,8 m."
+  },
+  "bollard": {
+   "file": "bollard.glb",
+   "dimensions_m": {
+    "x": 0.15,
+    "y": 1.11,
+    "z": 0.146
+   },
+   "triangles": 364,
+   "size_kb": 12.1,
+   "nodes": [
+    "bollard"
+   ],
+   "materials": [
+    "bollard_metal"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": ""
+  },
+  "bus-shelter": {
+   "file": "bus-shelter.glb",
+   "dimensions_m": {
+    "x": 4.5,
+    "y": 2.565,
+    "z": 1.75
+   },
+   "triangles": 416,
+   "size_kb": 55.0,
+   "nodes": [
+    "bus-shelter"
+   ],
+   "materials": [
+    "shelter_frame",
+    "glass",
+    "poster",
+    "wood_light"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Côté ouvert vers +Z. « glass » en alpha BLEND, « poster » (UV 0..1, deux faces) pour une affiche."
+  },
+  "cafe-chair": {
+   "file": "cafe-chair.glb",
+   "dimensions_m": {
+    "x": 0.575,
+    "y": 0.858,
+    "z": 0.661
+   },
+   "triangles": 2400,
+   "size_kb": 164.0,
+   "nodes": [
+    "cafe-chair"
+   ],
+   "materials": [
+    "cafe_chair"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Outdoor Table Chair Set 01 (chaise)",
+    "author": "James Ray Cock (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/outdoor_table_chair_set_01"
+   },
+   "notes": ""
+  },
+  "cafe-table": {
+   "file": "cafe-table.glb",
+   "dimensions_m": {
+    "x": 0.692,
+    "y": 0.726,
+    "z": 0.692
+   },
+   "triangles": 2000,
+   "size_kb": 132.0,
+   "nodes": [
+    "cafe-table"
+   ],
+   "materials": [
+    "cafe_table"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Outdoor Table Chair Set 01 (table)",
+    "author": "James Ray Cock (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/outdoor_table_chair_set_01"
+   },
+   "notes": ""
+  },
+  "chair": {
+   "file": "chair.glb",
+   "dimensions_m": {
+    "x": 0.566,
+    "y": 1.007,
+    "z": 0.676
+   },
+   "triangles": 2399,
+   "size_kb": 94.4,
+   "nodes": [
+    "chair"
+   ],
+   "materials": [
+    "chair"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "School Chair 01",
+    "author": "Ethan Place (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/SchoolChair_01"
+   },
+   "notes": "Chaise de salle de code (coque plastique, piètement métal)."
+  },
+  "desk": {
+   "file": "desk.glb",
+   "dimensions_m": {
+    "x": 1.6,
+    "y": 0.75,
+    "z": 0.8
+   },
+   "triangles": 388,
+   "size_kb": 52.1,
+   "nodes": [
+    "desk"
+   ],
+   "materials": [
+    "wood_light",
+    "desk_metal",
+    "desk_handle"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Avant (+Z) = côté utilisateur (tiroirs) ; voile de fond côté -Z."
+  },
+  "fire-hydrant": {
+   "file": "fire-hydrant.glb",
+   "dimensions_m": {
+    "x": 0.38,
+    "y": 0.93,
+    "z": 0.36
+   },
+   "triangles": 848,
+   "size_kb": 36.0,
+   "nodes": [
+    "fire-hydrant"
+   ],
+   "materials": [
+    "hydrant_red"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": ""
+  },
+  "hedge-01": {
+   "file": "hedge-01.glb",
+   "dimensions_m": {
+    "x": 2.0,
+    "y": 1.25,
+    "z": 0.75
+   },
+   "triangles": 1642,
+   "size_kb": 259.3,
+   "nodes": [
+    "hedge-01"
+   ],
+   "materials": [
+    "shrub_core",
+    "leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
+    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/tree_small_02"
+   },
+   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+  },
+  "monitor": {
+   "file": "monitor.glb",
+   "dimensions_m": {
+    "x": 0.545,
+    "y": 0.46,
+    "z": 0.19
+   },
+   "triangles": 146,
+   "size_kb": 12.9,
+   "nodes": [
+    "monitor"
+   ],
+   "materials": [
+    "monitor_body",
+    "screen"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Écran orienté +Z. Matériau « screen » avec UV 0..1."
+  },
+  "office-chair": {
+   "file": "office-chair.glb",
+   "dimensions_m": {
+    "x": 0.72,
+    "y": 0.966,
+    "z": 0.76
+   },
+   "triangles": 1234,
+   "size_kb": 79.4,
+   "nodes": [
+    "office-chair"
+   ],
+   "materials": [
+    "office_chair"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Office Chair Modern",
+    "author": "thethieme",
+    "license": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/office-chair-modern-675f34f7304e4d92812a41e9750539aa"
+   },
+   "notes": ""
+  },
+  "parasol": {
+   "file": "parasol.glb",
+   "dimensions_m": {
+    "x": 2.679,
+    "y": 2.63,
+    "z": 2.679
+   },
+   "triangles": 440,
+   "size_kb": 22.9,
+   "nodes": [
+    "parasol"
+   ],
+   "materials": [
+    "parasol_pole",
+    "parasol_fabric"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Toile « parasol_fabric » double face."
+  },
+  "pedestrian-light": {
+   "file": "pedestrian-light.glb",
+   "dimensions_m": {
+    "x": 0.25,
+    "y": 2.54,
+    "z": 0.425
+   },
+   "triangles": 292,
+   "size_kb": 22.9,
+   "nodes": [
+    "pedestrian-light"
+   ],
+   "materials": [
+    "tl_pole",
+    "tl_body",
+    "light_red",
+    "light_green"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Feu piéton : « light_red » (bonhomme rouge, haut) et « light_green » (bonhomme vert, bas) avec texture émissive ; éteindre via emissiveIntensity = 0."
+  },
+  "plant-pot": {
+   "file": "plant-pot.glb",
+   "dimensions_m": {
+    "x": 0.876,
+    "y": 1.053,
+    "z": 0.823
+   },
+   "triangles": 4419,
+   "size_kb": 209.5,
+   "nodes": [
+    "plant-pot"
+   ],
+   "materials": [
+    "plant_pot",
+    "plant_leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Potted Plant 02",
+    "author": "Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/potted_plant_02"
+   },
+   "notes": "Feuillage « plant_leaves » double face."
+  },
+  "planter": {
+   "file": "planter.glb",
+   "dimensions_m": {
+    "x": 1.09,
+    "y": 1.469,
+    "z": 1.105
+   },
+   "triangles": 692,
+   "size_kb": 193.8,
+   "nodes": [
+    "planter"
+   ],
+   "materials": [
+    "planter",
+    "soil",
+    "leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
+    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/tree_small_02"
+   },
+   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+  },
+  "reception-counter": {
+   "file": "reception-counter.glb",
+   "dimensions_m": {
+    "x": 2.26,
+    "y": 1.12,
+    "z": 0.74
+   },
+   "triangles": 244,
+   "size_kb": 29.4,
+   "nodes": [
+    "reception-counter"
+   ],
+   "materials": [
+    "counter_white",
+    "counter_dark",
+    "wood_light"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Avant (+Z) = côté public ; le personnel est côté -Z."
+  },
+  "shelf": {
+   "file": "shelf.glb",
+   "dimensions_m": {
+    "x": 1.078,
+    "y": 1.556,
+    "z": 0.372
+   },
+   "triangles": 3174,
+   "size_kb": 165.6,
+   "nodes": [
+    "shelf"
+   ],
+   "materials": [
+    "shelf"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Wooden Display Shelves 01",
+    "author": "James Ray Cock (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/wooden_display_shelves_01"
+   },
+   "notes": ""
+  },
+  "shrub-01": {
+   "file": "shrub-01.glb",
+   "dimensions_m": {
+    "x": 1.354,
+    "y": 1.15,
+    "z": 1.396
+   },
+   "triangles": 950,
+   "size_kb": 209.1,
+   "nodes": [
+    "shrub-01"
+   ],
+   "materials": [
+    "shrub_core",
+    "leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
+    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/tree_small_02"
+   },
+   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+  },
+  "sign-no-entry": {
+   "file": "sign-no-entry.glb",
+   "dimensions_m": {
+    "x": 0.65,
+    "y": 2.98,
+    "z": 0.103
+   },
+   "triangles": 184,
+   "size_kb": 39.7,
+   "nodes": [
+    "sign-no-entry"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sign-parking": {
+   "file": "sign-parking.glb",
+   "dimensions_m": {
+    "x": 0.6,
+    "y": 2.93,
+    "z": 0.103
+   },
+   "triangles": 152,
+   "size_kb": 22.5,
+   "nodes": [
+    "sign-parking"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sign-pedestrian-crossing": {
+   "file": "sign-pedestrian-crossing.glb",
+   "dimensions_m": {
+    "x": 0.6,
+    "y": 2.93,
+    "z": 0.103
+   },
+   "triangles": 152,
+   "size_kb": 33.6,
+   "nodes": [
+    "sign-pedestrian-crossing"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sign-roundabout": {
+   "file": "sign-roundabout.glb",
+   "dimensions_m": {
+    "x": 0.747,
+    "y": 2.99,
+    "z": 0.103
+   },
+   "triangles": 128,
+   "size_kb": 45.2,
+   "nodes": [
+    "sign-roundabout"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sign-speed-30": {
+   "file": "sign-speed-30.glb",
+   "dimensions_m": {
+    "x": 0.65,
+    "y": 2.98,
+    "z": 0.103
+   },
+   "triangles": 184,
+   "size_kb": 64.5,
+   "nodes": [
+    "sign-speed-30"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sign-stop": {
+   "file": "sign-stop.glb",
+   "dimensions_m": {
+    "x": 0.7,
+    "y": 3.03,
+    "z": 0.103
+   },
+   "triangles": 88,
+   "size_kb": 29.0,
+   "nodes": [
+    "sign-stop"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sign-yield": {
+   "file": "sign-yield.glb",
+   "dimensions_m": {
+    "x": 0.747,
+    "y": 2.99,
+    "z": 0.103
+   },
+   "triangles": 128,
+   "size_kb": 33.4,
+   "nodes": [
+    "sign-yield"
+   ],
+   "materials": [
+    "sign"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Panneau français sur mât, bord inférieur à 2,30 m ; face vers +Z ; un seul matériau « sign » (texture 512 px dessinée par script)."
+  },
+  "sofa": {
+   "file": "sofa.glb",
+   "dimensions_m": {
+    "x": 1.807,
+    "y": 0.709,
+    "z": 0.818
+   },
+   "triangles": 2728,
+   "size_kb": 102.3,
+   "nodes": [
+    "sofa"
+   ],
+   "materials": [
+    "sofa"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "Sofa 02",
+    "author": "Kirill Sannikov (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/sofa_02"
+   },
+   "notes": ""
+  },
+  "street-lamp": {
+   "file": "street-lamp.glb",
+   "dimensions_m": {
+    "x": 0.34,
+    "y": 7.15,
+    "z": 1.856
+   },
+   "triangles": 462,
+   "size_kb": 24.0,
+   "nodes": [
+    "street-lamp"
+   ],
+   "materials": [
+    "lamp_metal",
+    "lamp"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Crosse orientée vers +Z (au-dessus de la chaussée). Matériau émissif « lamp » (emissiveIntensity à piloter jour/nuit)."
+  },
+  "traffic-cone": {
+   "file": "traffic-cone.glb",
+   "dimensions_m": {
+    "x": 0.3,
+    "y": 0.5,
+    "z": 0.3
+   },
+   "triangles": 448,
+   "size_kb": 17.7,
+   "nodes": [
+    "traffic-cone"
+   ],
+   "materials": [
+    "cone_orange",
+    "cone_white"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": ""
+  },
+  "traffic-light": {
+   "file": "traffic-light.glb",
+   "dimensions_m": {
+    "x": 0.3,
+    "y": 3.18,
+    "z": 0.56
+   },
+   "triangles": 1328,
+   "size_kb": 49.4,
+   "nodes": [
+    "traffic-light"
+   ],
+   "materials": [
+    "tl_pole",
+    "tl_body",
+    "light_red",
+    "light_orange",
+    "light_green"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Feu tricolore français avec répétiteur bas. Lentilles « light_red », « light_orange », « light_green » : émissif défini pour les trois (toutes allumées par défaut) ; éteindre avec material.emissiveIntensity = 0. Le répétiteur partage les mêmes matériaux."
+  },
+  "trash-bin": {
+   "file": "trash-bin.glb",
+   "dimensions_m": {
+    "x": 0.47,
+    "y": 1.015,
+    "z": 0.47
+   },
+   "triangles": 928,
+   "size_kb": 31.3,
+   "nodes": [
+    "trash-bin"
+   ],
+   "materials": [
+    "bin_green",
+    "bin_inner"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": ""
+  },
+  "tree-01": {
+   "file": "tree-01.glb",
+   "dimensions_m": {
+    "x": 6.945,
+    "y": 8.8,
+    "z": 6.714
+   },
+   "triangles": 5688,
+   "size_kb": 667.2,
+   "nodes": [
+    "tree-01"
+   ],
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
+    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/tree_small_02"
+   },
+   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+  },
+  "tree-02": {
+   "file": "tree-02.glb",
+   "dimensions_m": {
+    "x": 4.456,
+    "y": 7.4,
+    "z": 4.584
+   },
+   "triangles": 4408,
+   "size_kb": 580.0,
+   "nodes": [
+    "tree-02"
+   ],
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
+    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/tree_small_02"
+   },
+   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+  },
+  "tree-03": {
+   "file": "tree-03.glb",
+   "dimensions_m": {
+    "x": 5.235,
+    "y": 6.2,
+    "z": 5.152
+   },
+   "triangles": 4208,
+   "size_kb": 566.8,
+   "nodes": [
+    "tree-03"
+   ],
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
+    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
+    "license": "CC0",
+    "url": "https://polyhaven.com/a/tree_small_02"
+   },
+   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+  },
+  "tv-screen": {
+   "file": "tv-screen.glb",
+   "dimensions_m": {
+    "x": 1.46,
+    "y": 0.84,
+    "z": 0.071
+   },
+   "triangles": 58,
+   "size_kb": 6.3,
+   "nodes": [
+    "tv-screen"
+   ],
+   "materials": [
+    "tv_body",
+    "screen"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Objet mural : origine en bas au centre, dos sur le plan z = 0 ; régler la hauteur à la pose. Matériau « screen » avec UV 0..1 (prêt pour une texture/vidéo)."
+  },
+  "water-dispenser": {
+   "file": "water-dispenser.glb",
+   "dimensions_m": {
+    "x": 0.32,
+    "y": 1.385,
+    "z": 0.41
+   },
+   "triangles": 588,
+   "size_kb": 30.3,
+   "nodes": [
+    "water-dispenser"
+   ],
+   "materials": [
+    "dispenser_white",
+    "dispenser_dark",
+    "tap_2a6",
+    "tap_c93",
+    "water"
+   ],
+   "animations": [],
+   "credit": {
+    "title": "généré",
+    "author": "généré par script Blender (bpy)",
+    "license": "CC0",
+    "url": null
+   },
+   "notes": "Bonbonne « water » en alpha BLEND."
+  }
+ }
+}
