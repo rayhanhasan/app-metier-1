@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Deux réalisations</title>
+<style>
+  @page { size: 1600px 900px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { background: #0a0a0a; }
+  body { font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+  .slide { position: relative; width: 1600px; height: 900px; overflow: hidden; page-break-after: always; background: #0a0a0a; display: flex; flex-direction: column; justify-content: center; padding: 0 130px; }
+  .slide:last-child { page-break-after: auto; }
+  h1 { font-size: 92px; line-height: 1.02; font-weight: 800; letter-spacing: -0.035em; }
+  h2 { font-size: 64px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; }
+  p { font-size: 30px; line-height: 1.35; color: #a3a3a3; margin-top: 26px; max-width: 980px; }
+  .num { font-size: 22px; font-weight: 600; letter-spacing: 0.14em; color: #737373; margin-bottom: 28px; }
+  .dim { color: #737373; }
+  /* image plein cadre + légende courte */
+  .full { padding: 0; justify-content: flex-end; }
+  .full img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .full .cap { position: relative; padding: 120px 70px 52px; background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0)); font-size: 44px; font-weight: 700; letter-spacing: -0.02em; }
+  /* texte à gauche, capture à droite */
+  .split { flex-direction: row; align-items: center; gap: 70px; padding: 0 0 0 130px; }
+  .split .txt { width: 520px; flex: none; }
+  .split .shot { flex: 1; height: 620px; border-radius: 14px 0 0 14px; overflow: hidden; border: 1px solid #262626; border-right: 0; }
+  .split .shot img { height: 100%; display: block; }
+  .tag { display: inline-block; margin-top: 30px; padding: 7px 14px; border: 1px solid #404040; border-radius: 99px; font-size: 18px; color: #a3a3a3; }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Rayhan, 18 ans.</h1>
+  <p>J’aide les entreprises à convertir plus.<br>Voici mes deux dernières réalisations.</p>
+</section>
+
+<section class="slide split">
+  <div class="txt">
+    <div class="num">01</div>
+    <h2>Un logiciel pour piloter l’entreprise.</h2>
+    <p>Tout au même endroit. Fini Excel et Word.</p>
+    <span class="tag">En cours de développement · données de démonstration</span>
+  </div>
+  <div class="shot"><img src="img/andy.jpg" alt="Tableau de bord interne"></div>
+</section>
+
+<section class="slide">
+  <div class="num">02</div>
+  <h1>La 3D.</h1>
+  <p>Un logiciel interne pour une auto-école.</p>
+</section>
+
+<section class="slide full">
+  <img src="img/hero.jpg" alt="Le quartier de l'auto-école en 3D">
+  <div class="cap">Toute l’activité, en direct.</div>
+</section>
+
+<section class="slide full">
+  <img src="img/front.jpg" alt="La vitrine de l'auto-école, salle de code visible">
+  <div class="cap">Jusqu’à l’intérieur.</div>
+</section>
+
+<section class="slide full">
+  <img src="img/suivi.jpg" alt="Suivi d'un moniteur en leçon">
+  <div class="cap">Chaque moniteur, chaque élève.</div>
+</section>
+
+<section class="slide full">
+  <img src="img/night.jpg" alt="Le quartier de nuit">
+  <div class="cap">De jour comme de nuit.</div>
+</section>
+
+<section class="slide">
+  <h1>Une vision globale.<br><span class="dim">Et qui donne envie.</span></h1>
+</section>
+
+</body>
+</html>
