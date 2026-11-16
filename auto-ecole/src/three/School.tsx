@@ -66,10 +66,10 @@ function useMats() {
       glassUp: new THREE.MeshPhysicalMaterial({ color: '#31465c', roughness: 0.04, metalness: 0.3, envMapIntensity: 2.2 }),
       concrete: new THREE.MeshStandardMaterial({ color: '#cfccc5', roughness: 0.85 }),
       dark: new THREE.MeshStandardMaterial({ color: '#2e333b', roughness: 0.7 }),
-      white: new THREE.MeshStandardMaterial({ color: '#dedbd4', roughness: 0.9 }),
+      white: new THREE.MeshStandardMaterial({ color: '#c9c5bb', roughness: 0.9 }),
       blue: new THREE.MeshStandardMaterial({ color: BRAND.color, roughness: 0.6 }),
-      ceiling: new THREE.MeshStandardMaterial({ color: '#f7f6f2', roughness: 0.95, side: THREE.DoubleSide }),
-      panel: new THREE.MeshStandardMaterial({ color: '#ffffff', emissive: '#fff4dd', emissiveIntensity: 1.3, roughness: 1 }),
+      ceiling: new THREE.MeshStandardMaterial({ color: '#d8d5cd', roughness: 0.95, side: THREE.DoubleSide }),
+      panel: new THREE.MeshStandardMaterial({ color: '#ffffff', emissive: '#fff4dd', emissiveIntensity: 0.75, roughness: 1 }),
       metal: new THREE.MeshStandardMaterial({ color: '#9aa0a8', roughness: 0.35, metalness: 0.85 }),
     }),
     [],
@@ -163,7 +163,7 @@ function Fascia({ mats }: { mats: ReturnType<typeof useMats> }) {
 }
 
 function UpperFloor({ mats }: { mats: ReturnType<typeof useMats> }) {
-  const plaster = usePbr('white_plaster_02', 3, { color: '#f1eee8' })
+  const plaster = usePbr('white_plaster_02', 3, { color: '#ffffff' })
   const h = SCHOOL.upperH
   const cy = UP0 + h / 2
   const upperGeo = useMemo(() => worldBox(W, h, D), [h])
@@ -203,7 +203,7 @@ function UpperFloor({ mats }: { mats: ReturnType<typeof useMats> }) {
 }
 
 function Interior({ mats }: { mats: ReturnType<typeof useMats> }) {
-  const floor = usePbr('laminate_floor_02', 2.2, { color: '#b9a98f' })
+  const floor = usePbr('laminate_floor_02', 2.2, { color: '#9c8c74' })
   const floorGeo = useMemo(() => rect(x0 + 0.1, x1 - 0.1, zBack + 0.1, zFront - 0.1, FLOOR_Y), [])
   const screen = canvasTexture('code-screen', 1024, 576, (g, w, h) => {
     // diapositive d'une séance de code : situation + réponses
@@ -295,9 +295,9 @@ function Interior({ mats }: { mats: ReturnType<typeof useMats> }) {
           <planeGeometry args={[1.2, 0.6]} />
         </mesh>
       ))}
-      <pointLight position={[-7, CEIL - 0.5, -12.5]} intensity={16} distance={13} decay={1.8} color="#fff3df" />
-      <pointLight position={[-6, CEIL - 0.5, -17]} intensity={12} distance={11} decay={1.8} color="#fff3df" />
-      <pointLight position={[1, CEIL - 0.5, -13.5]} intensity={16} distance={12} decay={1.8} color="#fff3df" />
+      <pointLight position={[-7, CEIL - 0.5, -12.5]} intensity={7} distance={13} decay={1.8} color="#fff3df" />
+      <pointLight position={[-6, CEIL - 0.5, -17]} intensity={5} distance={11} decay={1.8} color="#fff3df" />
+      <pointLight position={[1, CEIL - 0.5, -13.5]} intensity={7} distance={12} decay={1.8} color="#fff3df" />
 
       {/* murs pleins : fond (nord), ouest, et moitié arrière de l'est */}
       <Box p={[(x0 + x1) / 2, (FLOOR_Y + CEIL) / 2, zBack + 0.12]} s={[W, CEIL - FLOOR_Y, 0.24]} m={mats.white} />

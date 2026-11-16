@@ -653,7 +653,8 @@
    "nodes": [],
    "materials": [
     "bench"
-   ]
+   ],
+   "credit": "Park Bech Low-poly · MaX3Dd · CC-BY 4.0 · https://sketchfab.com/3d-models/park-bech-low-poly-d9014318124c4013a3bd49cfd69e8b77"
   },
   {
    "file": "props/bike-rack",
@@ -670,7 +671,8 @@
    "nodes": [],
    "materials": [
     "steel"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/bollard",
@@ -687,7 +689,8 @@
    "nodes": [],
    "materials": [
     "bollard_metal"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/bus-shelter",
@@ -707,7 +710,8 @@
     "glass",
     "poster",
     "wood_light"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/cafe-chair",
@@ -724,7 +728,11 @@
    "nodes": [],
    "materials": [
     "cafe_chair"
-   ]
+   ],
+   "tags": [
+    "cafe"
+   ],
+   "credit": "Outdoor Table Chair Set 01 (chaise) · James Ray Cock (Poly Haven) · CC0 · https://polyhaven.com/a/outdoor_table_chair_set_01"
   },
   {
    "file": "props/cafe-table",
@@ -741,7 +749,11 @@
    "nodes": [],
    "materials": [
     "cafe_table"
-   ]
+   ],
+   "tags": [
+    "cafe"
+   ],
+   "credit": "Outdoor Table Chair Set 01 (table) · James Ray Cock (Poly Haven) · CC0 · https://polyhaven.com/a/outdoor_table_chair_set_01"
   },
   {
    "file": "props/chair",
@@ -758,7 +770,11 @@
    "nodes": [],
    "materials": [
     "chair"
-   ]
+   ],
+   "tags": [
+    "cafe"
+   ],
+   "credit": "Outdoor Table Chair Set 01 (chaise) · James Ray Cock (Poly Haven) · CC0 · https://polyhaven.com/a/outdoor_table_chair_set_01"
   },
   {
    "file": "props/desk",
@@ -777,7 +793,8 @@
     "wood_light",
     "desk_metal",
     "desk_handle"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/fire-hydrant",
@@ -794,7 +811,8 @@
    "nodes": [],
    "materials": [
     "hydrant_red"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/hedge-01",
@@ -812,7 +830,8 @@
    "materials": [
     "shrub_core",
     "leaves"
-   ]
+   ],
+   "credit": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 » · généré ; textures : Rico Cilliers (Poly Haven) · CC0 · https://polyhaven.com/a/tree_small_02"
   },
   {
    "file": "props/monitor",
@@ -830,7 +849,8 @@
    "materials": [
     "monitor_body",
     "screen"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/office-chair",
@@ -847,7 +867,8 @@
    "nodes": [],
    "materials": [
     "office_chair"
-   ]
+   ],
+   "credit": "Office Chair Modern · thethieme · CC-BY 4.0 · https://sketchfab.com/3d-models/office-chair-modern-675f34f7304e4d92812a41e9750539aa"
   },
   {
    "file": "props/parasol",
@@ -865,7 +886,8 @@
    "materials": [
     "parasol_pole",
     "parasol_fabric"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/pedestrian-light",
@@ -885,7 +907,8 @@
     "tl_body",
     "light_red",
     "light_green"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/plant-pot",
@@ -903,7 +926,8 @@
    "materials": [
     "plant_pot",
     "plant_leaves"
-   ]
+   ],
+   "credit": "Potted Plant 02 · Rico Cilliers (Poly Haven) · CC0 · https://polyhaven.com/a/potted_plant_02"
   },
   {
    "file": "props/planter",
@@ -922,7 +946,8 @@
     "planter",
     "soil",
     "leaves"
-   ]
+   ],
+   "credit": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 » · généré ; textures : Rico Cilliers (Poly Haven) · CC0 · https://polyhaven.com/a/tree_small_02"
   },
   {
    "file": "props/reception-counter",
@@ -941,7 +966,8 @@
     "counter_white",
     "counter_dark",
     "wood_light"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/shelf",
@@ -958,7 +984,8 @@
    "nodes": [],
    "materials": [
     "shelf"
-   ]
+   ],
+   "credit": "Wooden Display Shelves 01 · James Ray Cock (Poly Haven) · CC0 · https://polyhaven.com/a/wooden_display_shelves_01"
   },
   {
    "file": "props/shrub-01",
@@ -976,7 +1003,8 @@
    "materials": [
     "shrub_core",
     "leaves"
-   ]
+   ],
+   "credit": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 » · généré ; textures : Rico Cilliers (Poly Haven) · CC0 · https://polyhaven.com/a/tree_small_02"
   },
   {
    "file": "props/sign-no-entry",
@@ -993,7 +1021,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sign-parking",
@@ -1010,7 +1039,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sign-pedestrian-crossing",
@@ -1027,7 +1057,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sign-roundabout",
@@ -1044,7 +1075,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sign-speed-30",
@@ -1061,7 +1093,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sign-stop",
@@ -1078,7 +1111,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sign-yield",
@@ -1095,7 +1129,8 @@
    "nodes": [],
    "materials": [
     "sign"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/sofa",
@@ -1112,7 +1147,8 @@
    "nodes": [],
    "materials": [
     "sofa"
-   ]
+   ],
+   "credit": "Sofa 02 · Kirill Sannikov (Poly Haven) · CC0 · https://polyhaven.com/a/sofa_02"
   },
   {
    "file": "props/street-lamp",
@@ -1130,7 +1166,8 @@
    "materials": [
     "lamp_metal",
     "lamp"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/traffic-cone",
@@ -1148,7 +1185,8 @@
    "materials": [
     "cone_orange",
     "cone_white"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/traffic-light",
@@ -1169,7 +1207,8 @@
     "light_red",
     "light_orange",
     "light_green"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/trash-bin",
@@ -1187,61 +1226,46 @@
    "materials": [
     "bin_green",
     "bin_inner"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/tree-01",
    "size": [
-    6.94,
-    8.8,
-    6.71
+    8.49,
+    9.5,
+    6.94
    ],
    "min": [
-    -3.54,
+    -4.79,
     0,
-    -3.23
+    -3.71
    ],
    "nodes": [],
    "materials": [
-    "bark",
-    "leaves"
-   ]
+    "leaves",
+    "bark"
+   ],
+   "credit": "Realistic Tree · danielpetrov · CC-BY 4.0 · https://sketchfab.com/3d-models/d989c0f801d847b9a74992ec4ddcfdfc"
   },
   {
    "file": "props/tree-02",
    "size": [
-    4.46,
-    7.4,
-    4.58
+    6.85,
+    8,
+    7.34
    ],
    "min": [
-    -2.24,
+    -3.26,
     0,
-    -2.37
+    -3.66
    ],
    "nodes": [],
    "materials": [
     "bark",
     "leaves"
-   ]
-  },
-  {
-   "file": "props/tree-03",
-   "size": [
-    5.23,
-    6.2,
-    5.15
    ],
-   "min": [
-    -2.8,
-    0,
-    -2.4
-   ],
-   "nodes": [],
-   "materials": [
-    "bark",
-    "leaves"
-   ]
+   "credit": "Linden · asiam · CC-BY 4.0 · https://sketchfab.com/3d-models/5d2541d5e24f424ca87f610955eebc9d"
   },
   {
    "file": "props/tv-screen",
@@ -1259,7 +1283,8 @@
    "materials": [
     "tv_body",
     "screen"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   },
   {
    "file": "props/water-dispenser",
@@ -1280,7 +1305,8 @@
     "tap_2a6",
     "tap_c93",
     "water"
-   ]
+   ],
+   "credit": "généré · généré par script Blender (bpy) · CC0"
   }
  ]
 }

@@ -18,7 +18,7 @@ for (const cat of ['cars', 'people', 'buildings', 'props']) {
   let manifest = null
   try { manifest = JSON.parse(readFileSync(join(dir, '_manifest.json'), 'utf8')) } catch {}
   // le manifeste peut être un tableau, un objet { files: [...] } ou un objet indexé par nom de fichier
-  const entries = !manifest ? [] : Array.isArray(manifest) ? manifest : Array.isArray(manifest.files) ? manifest.files : Array.isArray(manifest.fichiers) ? manifest.fichiers : Array.isArray(manifest.models) ? manifest.models : Array.isArray(manifest.items) ? manifest.items : Object.entries(manifest).map(([k, v]) => (v && typeof v === 'object' ? { file: k, ...v } : null)).filter(Boolean)
+  const entries = !manifest ? [] : Array.isArray(manifest) ? manifest : Array.isArray(manifest.files) ? manifest.files : Array.isArray(manifest.fichiers) ? manifest.fichiers : Array.isArray(manifest.models) ? manifest.models : manifest.models && typeof manifest.models === 'object' ? Object.values(manifest.models) : Array.isArray(manifest.items) ? manifest.items : Object.entries(manifest).map(([k, v]) => (v && typeof v === 'object' ? { file: k, ...v } : null)).filter(Boolean)
   for (const f of readdirSync(dir).filter((f) => f.endsWith('.glb')).sort()) {
     const name = f.replace(/\.glb$/, '')
     const info = { file: `${cat}/${name}` }

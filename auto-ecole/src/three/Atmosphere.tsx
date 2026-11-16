@@ -64,8 +64,8 @@ export function Lighting() {
         shadow-camera-bottom={-62}
         shadow-camera-near={1}
         shadow-camera-far={260}
-        shadow-bias={-0.0003}
-        shadow-normalBias={0.04}
+        shadow-bias={-0.0005}
+        shadow-normalBias={0.11}
         shadow-radius={3}
       />
     </>

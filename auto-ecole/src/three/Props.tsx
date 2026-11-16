@@ -92,6 +92,28 @@ function Lamps({ spots }: { spots: [number, number, number][] }) {
   )
 }
 
+/** Feuillage : découpe nette, double face, pas de reflets de ciel */
+function tuneTree(root: THREE.Object3D) {
+  root.traverse((o) => {
+    const m = o as THREE.Mesh
+    if (!m.isMesh) return
+    const mats = Array.isArray(m.material) ? m.material : [m.material]
+    for (const mat of mats as THREE.MeshStandardMaterial[]) {
+      if (!/leaves|leaf/.test(mat.name)) continue
+      mat.transparent = false
+      mat.alphaTest = 0.5
+      mat.side = THREE.DoubleSide
+      mat.envMapIntensity = 0.35
+      if (!mat.userData.toned) {
+        mat.color.multiplyScalar(0.78)
+        mat.userData.toned = true
+      }
+      mat.roughness = 1
+      mat.metalness = 0
+    }
+  })
+}
+
 export function Props() {
   const trees = useMemo(() => {
     const files = MODELS.props.filter((p) => p.file.includes('tree')).map((p) => p.file)
@@ -106,15 +128,14 @@ export function Props() {
     const zS = ROAD_HALF + 0.9
     for (let x = -42; x <= 44; x += 12) {
       // pas d'arbre devant la vitrine ni devant les accès du parking
-      const nearSchool = x > SCHOOL.x0 - 2 && x < SCHOOL.x1 + 1
-      const nearAccess = Math.abs(x - LOT.entryX) < 4.5 || Math.abs(x - LOT.exitX) < 4.5 || Math.abs(x - SIDE_STREET.x) < 5 || Math.abs(x - CROSSING.x) < 4
-      if (!nearSchool && !nearAccess) add(x, zN)
-      if (Math.abs(x - CROSSING.x) > 4) add(x + 6, zS)
+      const nearAccess = Math.abs(x - SIDE_STREET.x) < 5 || Math.abs(x - CROSSING.x) < 4
+      if (!nearAccess && (x < SCHOOL.x0 - 4 || x > LOT.x1 + 1)) add(x, zN, 0.8)
+      // côté sud : on dégage la vue sur l'auto-école et son parking
+      if (x + 6 < -20 || x + 6 > 40) add(x + 6, zS, 0.85)
     }
-    // square : grands arbres sur les côtés, vue dégagée au centre
-    for (const x of [-26, -19, 19, 26]) for (const z of [PARK.z0 + 8, PARK.z0 + 16, PARK.z0 + 24]) add(x + ((z * 7) % 3) - 1, z, 1.15)
-    add(-10, PARK.z1 - 3, 1.2)
-    add(10, PARK.z1 - 3, 1.2)
+    // square : grands arbres côté ouest seulement, la vue reste ouverte vers l'auto-école
+    for (const x of [-26, -18]) for (const z of [PARK.z0 + 8, PARK.z0 + 17, PARK.z0 + 25]) add(x + ((z * 7) % 3) - 1, z, 1)
+    add(-9, PARK.z1 - 3, 1.05)
     // îlots des giratoires
     for (const cx of [-R.x, R.x]) {
       add(cx, 0, 1.1)
@@ -134,7 +155,8 @@ export function Props() {
   const lamps = useMemo(() => {
     const out: [number, number, number][] = []
     for (let x = -48; x <= 48; x += 16) {
-      if (Math.abs(x - SIDE_STREET.x) > 4) out.push([x + 3, -ROAD_HALF - 0.55, 0])
+      // rien devant la vitrine de l'auto-école
+      if (Math.abs(x - SIDE_STREET.x) > 4 && (x + 3 < SCHOOL.x0 - 1 || x + 3 > SCHOOL.x1 + 1.5)) out.push([x + 3, -ROAD_HALF - 0.55, 0])
       out.push([x - 5, ROAD_HALF + 0.55, N])
     }
     return out
@@ -148,7 +170,11 @@ export function Props() {
   return (
     <group>
       {trees.map((t, i) => (
-        <Model key={i} file={t.file} position={[t.x, SW, t.z]} rotation={t.r} scale={t.s} />
+        <Model key={i} file={t.file} position={[t.x, SW, t.z]} rotation={t.r} scale={t.s} tune={tuneTree} />
+      ))}
+      {/* massifs bas côté est du square */}
+      {[[14, PARK.z0 + 9], [21, PARK.z0 + 13], [25, PARK.z0 + 7], [17, PARK.z0 + 21], [24, PARK.z0 + 24]].map(([x, z], i) => (
+        <Model key={`sh${i}`} file="props/shrub-01" position={[x, SW, z]} rotation={i * 1.3} scale={1 + (i % 3) * 0.25} tune={tuneTree} />
       ))}
       {!trees.length && null}
       <Lamps spots={lamps} />
@@ -167,7 +193,7 @@ export function Props() {
       <Model file="props/sign-yield" position={[-R.x + R.outerR + 2.5, SW, -ROAD_HALF - 0.6]} rotation={E} />
       <Model file="props/sign-yield" position={[R.x - R.outerR - 2.5, SW, ROAD_HALF + 0.6]} rotation={W} />
       <Model file="props/sign-parking" position={[LOT.entryX + 3.2, SW, FACADE_N + 0.5]} rotation={E} />
-      <Model file="props/sign-no-entry" position={[LOT.exitX - 3.1, SW, FACADE_N + 0.5]} rotation={0} />
+      <Model file="props/sign-no-entry" position={[LOT.exitX + 3.1, SW, -ROAD_HALF - 0.6]} rotation={0} />
       <Model file="props/sign-stop" position={[SIDE_STREET.x + SIDE_STREET.half + 0.6, SW, -ROAD_HALF - 1.2]} rotation={N} />
 
       {/* cônes de manœuvre sur le parking */}

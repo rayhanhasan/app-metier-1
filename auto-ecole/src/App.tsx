@@ -18,13 +18,14 @@ const STILL = q.has('still')
 /** Mode capture (?still) : fige l'image après quelques rendus et l'expose pour un script. */
 function Capture() {
   const gl = useThree((s) => s.gl)
+  const setFrameloop = useThree((s) => s.setFrameloop)
   const n = useRef(0)
   useFrame(() => {
     if (!STILL) return
     n.current++
     if (n.current === Number(q.get('frames') ?? 14)) {
       ;(window as unknown as { __png: string }).__png = gl.domElement.toDataURL('image/jpeg', 0.93)
-      gl.setAnimationLoop(null)
+      setFrameloop('never')
     }
   }, 2)
   return null
@@ -48,7 +49,7 @@ export default function App() {
         <Canvas
           shadows
           dpr={STILL ? 1 : [1, 1.75]}
-          camera={{ position: [44, 30, 52], fov: 27, near: 0.5, far: 900 }}
+          camera={{ position: [50, 21, 58], fov: 27, near: 0.5, far: 900 }}
           gl={{ antialias: false, powerPreference: 'high-performance', toneMapping: THREE.NoToneMapping }}
         >
           <Lighting />

@@ -771,78 +771,31 @@
   },
   "tree-01": {
    "file": "tree-01.glb",
-   "dimensions_m": {
-    "x": 6.945,
-    "y": 8.8,
-    "z": 6.714
-   },
-   "triangles": 5688,
-   "size_kb": 667.2,
-   "nodes": [
-    "tree-01"
-   ],
    "materials": [
     "bark",
     "leaves"
    ],
-   "animations": [],
    "credit": {
-    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
-    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
-    "license": "CC0",
-    "url": "https://polyhaven.com/a/tree_small_02"
+    "title": "Realistic Tree",
+    "author": "danielpetrov",
+    "license": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/d989c0f801d847b9a74992ec4ddcfdfc"
    },
-   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+   "note": "Mis à l'échelle (9,5 m), origine au pied, textures 1024 WebP."
   },
   "tree-02": {
    "file": "tree-02.glb",
-   "dimensions_m": {
-    "x": 4.456,
-    "y": 7.4,
-    "z": 4.584
-   },
-   "triangles": 4408,
-   "size_kb": 580.0,
-   "nodes": [
-    "tree-02"
-   ],
    "materials": [
     "bark",
     "leaves"
    ],
-   "animations": [],
    "credit": {
-    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
-    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
-    "license": "CC0",
-    "url": "https://polyhaven.com/a/tree_small_02"
+    "title": "Linden",
+    "author": "asiam",
+    "license": "CC-BY 4.0",
+    "url": "https://sketchfab.com/3d-models/5d2541d5e24f424ca87f610955eebc9d"
    },
-   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
-  },
-  "tree-03": {
-   "file": "tree-03.glb",
-   "dimensions_m": {
-    "x": 5.235,
-    "y": 6.2,
-    "z": 5.152
-   },
-   "triangles": 4208,
-   "size_kb": 566.8,
-   "nodes": [
-    "tree-03"
-   ],
-   "materials": [
-    "bark",
-    "leaves"
-   ],
-   "animations": [],
-   "credit": {
-    "title": "généré (géométrie par script) ; textures feuillage/écorce dérivées de « Tree Small 02 »",
-    "author": "généré ; textures : Rico Cilliers (Poly Haven)",
-    "license": "CC0",
-    "url": "https://polyhaven.com/a/tree_small_02"
-   },
-   "notes": "Feuillage en cartes alpha : matériau « leaves » (alphaMode MASK, alphaCutoff 0.4, double face, normales sphériques)."
+   "note": "Mis à l'échelle (8 m), origine au pied, textures 1024 WebP."
   },
   "tv-screen": {
    "file": "tv-screen.glb",

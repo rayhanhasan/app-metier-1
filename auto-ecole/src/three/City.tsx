@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import * as THREE from 'three'
 import { MODELS, type ModelInfo } from '../assets'
 import { FACADE_N, FACADE_S, LOT, ROUNDABOUT, SIDE_STREET } from '../world'
 import { Model } from './Model'
@@ -95,6 +96,22 @@ function fill(row: Row, pool: ModelInfo[]): Placed[] {
   return out
 }
 
+/** La nuit, les façades restent lisibles : léger éclairage urbain simulé par l'émissif */
+function tuneFacade(root: THREE.Object3D) {
+  root.traverse((o) => {
+    const m = o as THREE.Mesh
+    if (!m.isMesh) return
+    const mat = m.material as THREE.MeshStandardMaterial
+    if (!mat.map || mat.userData.facade) return
+    mat.userData.facade = true
+    mat.emissiveMap = mat.map
+    mat.emissive = new THREE.Color('#ffd9a8')
+    mat.emissiveIntensity = 0
+    m.userData.glow = 0.05
+    m.userData.glowDay = 0
+  })
+}
+
 export function City() {
   const placed = useMemo(() => ROWS.flatMap((r) => fill(r, MODELS.buildings)), [])
   const monument = MODELS.buildings.find((b) => b.file.includes('eglise'))
@@ -102,7 +119,7 @@ export function City() {
     <group>
       {placed.map((p) =>
         p.file ? (
-          <Model key={p.key} file={p.file} position={[p.x, SW, p.z]} rotation={p.rot} scale={p.scale} />
+          <Model key={p.key} file={p.file} position={[p.x, SW, p.z]} rotation={p.rot} scale={p.scale} tune={tuneFacade} />
         ) : (
           <mesh key={p.key} position={[p.x, SW + p.size[1] / 2, p.z]} rotation={[0, p.rot, 0]} castShadow receiveShadow>
             <boxGeometry args={p.size} />

@@ -94,13 +94,25 @@ function useRoofSign() {
 }
 
 const beamTex = () =>
-  canvasTexture('beam', 128, 256, (g, w, h) => {
-    const grd = g.createRadialGradient(w / 2, h, 4, w / 2, h * 0.55, h * 0.75)
-    grd.addColorStop(0, 'rgba(255,248,225,0.95)')
-    grd.addColorStop(0.45, 'rgba(255,244,214,0.35)')
-    grd.addColorStop(1, 'rgba(255,244,214,0)')
-    g.fillStyle = grd
-    g.fillRect(0, 0, w, h)
+  canvasTexture('beam2', 128, 256, (g, w, h) => {
+    // faisceau en éventail : intense près du pare-chocs, nul sur tous les bords du rectangle
+    const img = g.createImageData(w, h)
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const v = 1 - y / h // 0 = près de la voiture
+        const spread = 0.16 + v * 0.34
+        const u = Math.abs(x / w - 0.5) / spread
+        const side = Math.max(0, 1 - u * u)
+        const along = Math.pow(Math.max(0, 1 - v), 1.6) * Math.min(1, v * 9)
+        const a = side * along
+        const i = (y * w + x) * 4
+        img.data[i] = 255
+        img.data[i + 1] = 246
+        img.data[i + 2] = 222
+        img.data[i + 3] = Math.round(a * 255)
+      }
+    }
+    g.putImageData(img, 0, 0)
   })
 
 function Car({ v, file }: { v: Vehicle; file: string }) {

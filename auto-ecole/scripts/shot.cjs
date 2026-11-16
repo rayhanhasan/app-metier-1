@@ -9,6 +9,8 @@ const { chromium } = require('playwright'); const fs = require('fs');
   await p.goto(`http://localhost:4400/?still&${query}`);
   try { await p.waitForFunction('!!window.__png', null, { timeout: 420000 }); } catch(e) { logs.push('TIMEOUT'); }
   const data = await p.evaluate('window.__png');
-  if (data) fs.writeFileSync(out, Buffer.from(data.split(',')[1], 'base64'));
+  // avec l'interface : capture de la page entière une fois l'image 3D figée
+  if (data && !query.includes('nohud')) { await p.waitForTimeout(700); await p.screenshot({ path: out, type: 'jpeg', quality: 92 }); }
+  else if (data) fs.writeFileSync(out, Buffer.from(data.split(',')[1], 'base64'));
   console.log(out.split('/').pop(), data ? 'ok' : 'PAS D\'IMAGE', Math.round((Date.now()-t0)/1000)+'s', [...new Set(logs)].slice(0,6).join(' | ')); await b.close();
 })();
