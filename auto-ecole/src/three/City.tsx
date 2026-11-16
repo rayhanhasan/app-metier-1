@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { MODELS, type ModelInfo } from '../assets'
 import { FACADE_N, FACADE_S, LOT, ROUNDABOUT, SIDE_STREET } from '../world'
 import { Model } from './Model'
+import { litWindows } from './shaders'
 
 const SW = 0.14
 const R = ROUNDABOUT
@@ -109,6 +110,7 @@ function tuneFacade(root: THREE.Object3D) {
     mat.emissiveIntensity = 0
     m.userData.glow = 0.05
     m.userData.glowDay = 0
+    litWindows(mat)
   })
 }
 

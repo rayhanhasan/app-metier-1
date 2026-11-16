@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import { Bloom, BrightnessContrast, EffectComposer, HueSaturation, N8AO, SMAA, TiltShift2, ToneMapping, Vignette } from '@react-three/postprocessing'
@@ -6,6 +6,7 @@ import { ToneMappingMode } from 'postprocessing'
 import * as THREE from 'three'
 import { useUi } from '../store'
 import { PRESETS } from './daylight'
+import { U } from './shaders'
 
 const q = new URLSearchParams(location.search)
 const LOW = q.get('q') === 'low'
@@ -21,8 +22,6 @@ export function Lighting() {
   useEffect(() => {
     scene.fog = new THREE.Fog(p.fog, p.fogNear, p.fogFar)
     scene.environmentIntensity = p.envIntensity
-    scene.backgroundIntensity = p.bgIntensity
-    scene.backgroundBlurriness = p.bgBlur
   }, [scene, p])
 
   // Les objets marqués userData.glow s'allument à la tombée de la nuit (enseignes, écrans, dalles)
@@ -41,7 +40,12 @@ export function Lighting() {
     return () => clearTimeout(id)
   }, [scene, p])
 
-  useFrame(() => {
+  useEffect(() => {
+    U.night.value = p.night > 0.9 ? 1 : p.night > 0.2 ? 0.35 : 0
+  }, [p])
+
+  useFrame((_, dt) => {
+    U.time.value += dt
     // l'ombre suit la zone centrale : cadre fixe, assez large pour le quartier
     sun.current?.target.position.set(0, 0, -6)
     sun.current?.target.updateMatrixWorld()
@@ -50,7 +54,8 @@ export function Lighting() {
   const S = 2048 * (LOW ? 1 : 2)
   return (
     <>
-      <Environment files={p.hdr} background />
+      <Environment files={p.hdr} />
+      <SkyDome top={p.skyTop} horizon={p.skyHorizon} gain={p.skyGain} />
       <directionalLight
         ref={sun}
         position={p.sunPos}
@@ -72,6 +77,37 @@ export function Lighting() {
   )
 }
 
+/** Ciel dégradé : horizon clair, zénith saturé. L'HDRI n'éclaire plus que la scène. */
+function SkyDome({ top, horizon, gain }: { top: string; horizon: string; gain: number }) {
+  const mat = useMemo(
+    () =>
+      new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        depthWrite: false,
+        fog: false,
+        uniforms: { uTop: { value: new THREE.Color() }, uHorizon: { value: new THREE.Color() }, uGain: { value: 1 } },
+        vertexShader: 'varying vec3 vDir; void main() { vDir = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+        fragmentShader: `uniform vec3 uTop; uniform vec3 uHorizon; uniform float uGain; varying vec3 vDir;
+          void main() {
+            float h = clamp(vDir.y, 0.0, 1.0);
+            vec3 c = mix(uHorizon, uTop, pow(h, 0.45));
+            gl_FragColor = vec4(c * uGain, 1.0);
+          }`,
+      }),
+    [],
+  )
+  useEffect(() => {
+    mat.uniforms.uTop.value.set(top)
+    mat.uniforms.uHorizon.value.set(horizon)
+    mat.uniforms.uGain.value = gain
+  }, [mat, top, horizon, gain])
+  return (
+    <mesh material={mat} renderOrder={-10} frustumCulled={false}>
+      <sphereGeometry args={[800, 32, 16]} />
+    </mesh>
+  )
+}
+
 export function Effects() {
   const tod = useUi((s) => s.tod)
   const shot = useUi((s) => s.shot)
@@ -87,7 +123,7 @@ export function Effects() {
     <EffectComposer multisampling={0} enableNormalPass={false}>
       <N8AO aoRadius={2.2} intensity={2.6} distanceFalloff={0.6} quality={LOW ? 'low' : 'medium'} halfRes={LOW} color="#0b1020" />
       <Bloom mipmapBlur intensity={p.bloom} luminanceThreshold={1.05} luminanceSmoothing={0.25} radius={0.7} />
-      <TiltShift2 blur={wide ? 0.11 : 0.05} taper={0.55} samples={LOW ? 6 : 10} />
+      <TiltShift2 blur={wide ? 0.075 : 0.04} taper={0.55} samples={LOW ? 6 : 10} />
       <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       <HueSaturation saturation={p.saturation} />
       <BrightnessContrast contrast={p.contrast} />

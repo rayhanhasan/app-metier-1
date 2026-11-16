@@ -1,15 +1,7 @@
 import { Camera, Clapperboard, Moon, Sun, Sunset, Tag, X } from 'lucide-react'
-import { useUi, type CarRow, type Shot, type TimeOfDay } from '../store'
+import { useUi, type Shot, type StaffRow, type TimeOfDay } from '../store'
 import { BRAND } from '../world'
 import { tagEls } from '../three/Tags'
-
-const STATE: Record<CarRow['state'], { label: string; dot: string }> = {
-  parked: { label: 'Au parking', dot: '#94a3b8' },
-  reversing: { label: 'Manœuvre', dot: '#f59e0b' },
-  exiting: { label: 'Départ', dot: '#f59e0b' },
-  lesson: { label: 'En leçon', dot: '#22c55e' },
-  returning: { label: 'Se gare', dot: '#38bdf8' },
-}
 
 const TODS: { id: TimeOfDay; label: string; icon: typeof Sun }[] = [
   { id: 'day', label: 'Jour', icon: Sun },
@@ -26,56 +18,57 @@ const SHOTS: { id: Shot; label: string }[] = [
   { id: 'top', label: 'Plan' },
 ]
 
+const initials = (n: string) => n.split(' ').map((p) => p[0]).join('').slice(0, 2)
+const first = (n: string) => n.split(' ')[0]
+
+/** Étiquettes au-dessus des voitures de l'école : qui est à bord */
 function CarTags() {
-  const rows = useUi((s) => s.rows)
+  const staff = useUi((s) => s.staff)
   const labels = useUi((s) => s.labels)
   const selected = useUi((s) => s.selected)
   const select = useUi((s) => s.select)
   if (!labels) return null
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {rows.map((r) => (
-        <button
-          key={r.id}
-          ref={(el) => {
-            if (el) tagEls.set(r.id, el)
-            else tagEls.delete(r.id)
-          }}
-          onClick={() => select(r.id)}
-          style={{ visibility: 'hidden' }}
-          className={`tag pointer-events-auto absolute left-0 top-0 ${selected === r.id ? 'tag-on' : ''}`}
-        >
-          <span className="tag-n">{r.n}</span>
-          <span className="tag-txt">
-            {r.state === 'parked' ? 'Au parking' : `${r.instructor.split(' ')[0]} · ${r.student.split(' ')[0]}`}
-            {r.state !== 'parked' && <i>{r.kmh} km/h</i>}
-          </span>
-        </button>
-      ))}
+      {staff
+        .filter((r) => r.where === 'voiture')
+        .map((r) => (
+          <button
+            key={r.id}
+            ref={(el) => {
+              if (el) tagEls.set(r.id, el)
+              else tagEls.delete(r.id)
+            }}
+            onClick={() => select(r.id)}
+            style={{ visibility: 'hidden' }}
+            className={`tag pointer-events-auto absolute left-0 top-0 ${selected === r.id ? 'tag-on' : ''}`}
+          >
+            <span className="tag-n">{r.n}</span>
+            <span className="tag-txt">{r.state === 'parked' ? first(r.name) : `${first(r.name)} · ${first(r.student ?? '')}`}</span>
+          </button>
+        ))}
     </div>
   )
 }
 
-function Fleet() {
-  const rows = useUi((s) => s.rows)
+function Team() {
+  const staff = useUi((s) => s.staff)
   const selected = useUi((s) => s.selected)
   const select = useUi((s) => s.select)
+  const onRoad = staff.filter((r) => r.state === 'lesson').length
   return (
-    <div className="hud-card w-[300px]">
-      <div className="hud-title">Flotte · {rows.filter((r) => r.state === 'lesson').length} en leçon</div>
-      {rows.map((r) => (
+    <div className="hud-card w-[310px]">
+      <div className="hud-title">
+        Moniteurs · {staff.length} présents · {onRoad} en leçon
+      </div>
+      {staff.map((r) => (
         <button key={r.id} onClick={() => select(selected === r.id ? null : r.id)} className={`fleet-row ${selected === r.id ? 'fleet-on' : ''}`}>
-          <span className="fleet-n">{r.n}</span>
+          <span className="avatar">{initials(r.name)}</span>
           <span className="min-w-0 flex-1 text-left">
-            <span className="block truncate text-[13px] font-semibold text-white">
-              {r.instructor} <span className="font-normal text-white/60">avec</span> {r.student.split(' ')[0]}
-            </span>
-            <span className="block truncate text-[11.5px] text-white/60">{r.note}</span>
+            <span className="block truncate text-[13px] font-semibold text-white">{r.name}</span>
+            <span className="block truncate text-[11.5px] text-white/60">{r.status}</span>
           </span>
-          <span className="flex items-center gap-1.5 text-[11.5px] text-white/80">
-            <span className="size-2 rounded-full" style={{ background: STATE[r.state].dot }} />
-            {r.state === 'lesson' ? `${r.kmh} km/h` : STATE[r.state].label}
-          </span>
+          <span className="size-2 flex-none rounded-full" style={{ background: r.dot }} />
         </button>
       ))}
     </div>
@@ -83,49 +76,48 @@ function Fleet() {
 }
 
 function Detail() {
-  const row = useUi((s) => s.rows.find((r) => r.id === s.selected))
+  const row: StaffRow | undefined = useUi((s) => s.staff.find((r) => r.id === s.selected))
   const select = useUi((s) => s.select)
   if (!row) return null
   return (
-    <div className="hud-card w-[300px]">
+    <div className="hud-card w-[310px]">
       <div className="flex items-start justify-between">
-        <div>
-          <div className="hud-title">Peugeot 208 · n° {row.n}</div>
-          <div className="plate">{row.plate}</div>
+        <div className="flex items-center gap-2.5">
+          <span className="avatar !size-9 !text-[13px]">{initials(row.name)}</span>
+          <div>
+            <div className="text-[15px] font-bold leading-tight text-white">{row.name}</div>
+            <div className="text-[11.5px] text-white/60">Moniteur · {row.where}</div>
+          </div>
         </div>
         <button onClick={() => select(null)} className="rounded p-1 text-white/50 hover:bg-white/10 hover:text-white">
           <X size={16} />
         </button>
       </div>
-      <div className="mt-3 grid grid-cols-2 gap-2">
-        <div className="stat">
-          <span>Moniteur</span>
-          <b>{row.instructor}</b>
-        </div>
-        <div className="stat">
-          <span>Élève</span>
-          <b>{row.student}</b>
-        </div>
-        <div className="stat">
-          <span>Heure de conduite</span>
-          <b>{row.hour} / 20</b>
-        </div>
-        <div className="stat">
-          <span>Vitesse</span>
-          <b>{row.kmh} km/h</b>
-        </div>
-      </div>
-      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
-        <div className="h-full rounded-full bg-[#ffcc00]" style={{ width: `${(row.hour / 20) * 100}%` }} />
-      </div>
-      <div className="mt-3 text-[12px] text-white/60">Compétence travaillée</div>
-      <div className="text-[14px] font-semibold text-white">{row.skill}</div>
-      <div className="mt-2 flex gap-4 text-[12px] text-white/70">
-        <span>{row.km.toFixed(1).replace('.', ',')} km parcourus</span>
-        <span>
-          {row.stalls} calage{row.stalls > 1 ? 's' : ''}
-        </span>
-      </div>
+      <div className="mt-2.5 text-[13px] text-white/85">{row.status}</div>
+      {row.where === 'voiture' && (
+        <>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="stat">
+              <span>Élève</span>
+              <b>{row.student}</b>
+            </div>
+            <div className="stat">
+              <span>Véhicule</span>
+              <b>208 n° {row.n}</b>
+            </div>
+          </div>
+          <div className="mt-3 flex items-center justify-between text-[12px] text-white/60">
+            <span>Heure de conduite</span>
+            <span className="font-semibold text-white">{row.hour} / 20</span>
+          </div>
+          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/10">
+            <div className="h-full rounded-full bg-[#ffcc00]" style={{ width: `${((row.hour ?? 0) / 20) * 100}%` }} />
+          </div>
+          <div className="mt-3 text-[12px] text-white/60">Compétence travaillée</div>
+          <div className="text-[14px] font-semibold text-white">{row.skill}</div>
+          <div className="plate mt-3">{row.plate}</div>
+        </>
+      )}
     </div>
   )
 }
@@ -151,9 +143,9 @@ export function Hud() {
         </div>
       </div>
 
-      {/* flotte + détail */}
+      {/* suivi des moniteurs + fiche */}
       <div className="pointer-events-auto absolute right-5 top-5 flex flex-col gap-2">
-        <Fleet />
+        <Team />
         <Detail />
       </div>
 
@@ -170,7 +162,7 @@ export function Hud() {
       <div className="pointer-events-auto absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2">
         <div className="hud-bar">
           {TODS.map((t) => (
-            <button key={t.id} onClick={() => s.setTod(t.id)} className={`bar-btn ${s.tod === t.id ? 'bar-on' : ''}`} title={t.label}>
+            <button key={t.id} onClick={() => s.setTod(t.id)} className={`bar-btn whitespace-nowrap ${s.tod === t.id ? 'bar-on' : ''}`} title={t.label}>
               <t.icon size={15} /> {t.label}
             </button>
           ))}

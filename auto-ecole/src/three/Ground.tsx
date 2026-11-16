@@ -1,8 +1,10 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import * as THREE from 'three'
 import { CROSSING, FACADE_N, FACADE_S, LANE, LOT, PARK, ROAD_HALF, ROUNDABOUT, SIDE_STREET, BRAND } from '../world'
 import { arcPoints, disc, polygon, quads, rect, wallAlong, worldBox, type V2 } from './flat'
 import { canvasTexture, FONT, usePbr } from './materials'
+import { useUi } from '../store'
+import { PRESETS } from './daylight'
 
 const CURB_H = 0.14
 const R = ROUNDABOUT
@@ -310,6 +312,16 @@ export function Ground() {
   const pavers = usePbr('large_grey_tiles', 2.4, { color: '#b9b4aa' })
   const lawn = usePbr('leafy_grass', 3.5, { color: '#86a56c' })
   const base = useMemo(() => new THREE.MeshStandardMaterial({ color: '#b9b5ad', roughness: 1 }), [])
+  // la nuit, la chaussée est humide : elle accroche les lampadaires et les phares
+  const tod = useUi((s) => s.tod)
+  useEffect(() => {
+    const wet = PRESETS[tod].night > 0.9
+    for (const m of [asphalt, lotAsphalt]) {
+      m.roughness = wet ? 0.42 : 1
+      m.metalness = wet ? 0.15 : 0
+      m.envMapIntensity = wet ? 2.2 : 1
+    }
+  }, [tod, asphalt, lotAsphalt])
 
   return (
     <group>

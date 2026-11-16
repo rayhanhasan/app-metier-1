@@ -6,6 +6,7 @@ import { sim, useUi } from '../store'
 import { CROSSING, FACADE_N, LANE, LOT, PARK, ROAD_HALF, ROUNDABOUT, SCHOOL, SIDE_STREET } from '../world'
 import { Model } from './Model'
 import { PRESETS } from './daylight'
+import { windyLeaves } from './shaders'
 import type { CastSpot } from './School'
 
 const SW = 0.14 // hauteur du trottoir
@@ -110,6 +111,7 @@ function tuneTree(root: THREE.Object3D) {
       }
       mat.roughness = 1
       mat.metalness = 0
+      windyLeaves(mat)
     }
   })
 }

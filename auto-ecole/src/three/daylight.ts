@@ -17,6 +17,10 @@ export interface Preset {
   bloom: number
   saturation: number
   contrast: number
+  /** ciel dégradé : zénith, horizon, intensité */
+  skyTop: string
+  skyHorizon: string
+  skyGain: number
 }
 
 export const PRESETS: Record<TimeOfDay, Preset> = {
@@ -29,10 +33,13 @@ export const PRESETS: Record<TimeOfDay, Preset> = {
     bgIntensity: 1.15,
     bgBlur: 0.15,
     exposure: 0.9,
-    fog: '#cfdcea',
+    fog: '#cfe0f0',
     fogNear: 110,
     fogFar: 420,
     night: 0,
+    skyTop: '#2f74d0',
+    skyHorizon: '#cfe4f7',
+    skyGain: 1.25,
     bloom: 0.25,
     saturation: 0.18,
     contrast: 0.12,
@@ -46,10 +53,13 @@ export const PRESETS: Record<TimeOfDay, Preset> = {
     bgIntensity: 1.6,
     bgBlur: 0.2,
     exposure: 0.85,
-    fog: '#e6c3a3',
+    fog: '#f1c9a2',
     fogNear: 90,
     fogFar: 380,
     night: 0.35,
+    skyTop: '#4a6fae',
+    skyHorizon: '#ffc590',
+    skyGain: 1.2,
     bloom: 0.45,
     saturation: 0.16,
     contrast: 0.1,
@@ -63,14 +73,27 @@ export const PRESETS: Record<TimeOfDay, Preset> = {
     bgIntensity: 0.9,
     bgBlur: 0.1,
     exposure: 1.05,
-    fog: '#0c1222',
+    fog: '#121c33',
     fogNear: 70,
     fogFar: 330,
     night: 1,
+    skyTop: '#050814',
+    skyHorizon: '#1b2a4a',
+    skyGain: 1,
     bloom: 0.95,
     saturation: 0.1,
     contrast: 0.12,
   },
+}
+
+// Réglages fins par URL, pour comparer des rendus sans recompiler : ?sun=3&bg=1.2&exp=0.9&env=0.6
+const q = new URLSearchParams(location.search)
+const over = (k: string) => (q.has(k) ? Number(q.get(k)) : undefined)
+for (const p of Object.values(PRESETS)) {
+  p.sunIntensity = over('sun') ?? p.sunIntensity
+  p.bgIntensity = over('bg') ?? p.bgIntensity
+  p.exposure = over('exp') ?? p.exposure
+  p.envIntensity = over('env') ?? p.envIntensity
 }
 
 export const preset = () => PRESETS[useUi.getState().tod]
