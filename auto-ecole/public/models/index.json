@@ -111,14 +111,14 @@
   {
    "file": "people/person-01",
    "size": [
-    1.13,
-    1.77,
-    0.22
+    1.17,
+    1.81,
+    0.51
    ],
    "min": [
-    -0.57,
+    -0.58,
     0,
-    -0.11
+    -0.12
    ],
    "clips": [
     "drive",
@@ -128,22 +128,29 @@
     "talk",
     "walk"
    ],
-   "nodes": [],
-   "materials": [
-    "ManMaterial",
-    "Hair"
+   "nodes": [
+    "body"
    ],
-   "credit": "Low-poly Man · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-man-7b93db2d46d847f191cf5e841b322856"
+   "materials": [
+    "01_body",
+    "01_clothes0",
+    "01_clothes1",
+    "01_eyebrows",
+    "01_eyelashes",
+    "01_eyes",
+    "01_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/young_caucasian_male, eyes/low-poly + brown, eyebrows/eyebrow001, eyelashes/eyelashes01, hair/short02, clothes/male_casualsuit01, clothes/shoes01 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
   },
   {
    "file": "people/person-02",
    "size": [
-    1.47,
-    1.8,
-    0.24
+    1.01,
+    1.67,
+    0.43
    ],
    "min": [
-    -0.74,
+    -0.51,
     0,
     -0.12
    ],
@@ -155,77 +162,30 @@
     "talk",
     "walk"
    ],
-   "nodes": [],
-   "materials": [
-    "ManCasual2Material"
+   "nodes": [
+    "body"
    ],
-   "credit": "Low-poly Man Casual Clothes 2 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-man-casual-clothes-2-4a834adf1e33405c979e94555e7955c6"
+   "materials": [
+    "02_body",
+    "02_clothes0",
+    "02_clothes1",
+    "02_clothes2",
+    "02_eyebrows",
+    "02_eyelashes",
+    "02_eyes",
+    "02_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/young_caucasian_female, eyes/low-poly + brownlight, eyebrows/eyebrow006, eyelashes/eyelashes01, hair/ponytail01, clothes/toigo_fisherman_sweater, clothes/toigo_wool_pants, clothes/shoes04 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB ; vêtements des packs : MargaretToigo) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
   },
   {
    "file": "people/person-03",
    "size": [
-    1.45,
-    1.76,
-    0.24
+    1.18,
+    1.87,
+    0.54
    ],
    "min": [
-    -0.72,
-    0,
-    -0.12
-   ],
-   "clips": [
-    "drive",
-    "idle",
-    "sit",
-    "sit_talk",
-    "talk",
-    "walk"
-   ],
-   "nodes": [],
-   "materials": [
-    "Material"
-   ],
-   "credit": "Low-poly Man Casual Clothes 5 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-man-casual-clothes-5-2cb8c4b198e64a92b4bc9d32a0f2973d"
-  },
-  {
-   "file": "people/person-04",
-   "size": [
-    0.78,
-    1.65,
-    0.2
-   ],
-   "min": [
-    -0.39,
-    0,
-    -0.1
-   ],
-   "clips": [
-    "drive",
-    "idle",
-    "sit",
-    "sit_talk",
-    "talk",
-    "walk"
-   ],
-   "nodes": [],
-   "materials": [
-    "skin",
-    "hh",
-    "shorts",
-    "blouse",
-    "hair"
-   ],
-   "credit": "Low-poly Woman · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-woman-752778128b9a4b578586dbce40c0366f"
-  },
-  {
-   "file": "people/person-05",
-   "size": [
-    1.42,
-    1.69,
-    0.28
-   ],
-   "min": [
-    -0.71,
+    -0.59,
     0,
     -0.14
    ],
@@ -237,21 +197,63 @@
     "talk",
     "walk"
    ],
-   "nodes": [],
-   "materials": [
-    "WomanCasual2Material"
+   "nodes": [
+    "body"
    ],
-   "credit": "Low-poly Woman Casual 2 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-woman-casual-2-7b127f7a90e645eca0a3a48f056fc928"
+   "materials": [
+    "03_body",
+    "03_clothes0",
+    "03_clothes1",
+    "03_eyebrows",
+    "03_eyelashes",
+    "03_eyes",
+    "03_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/middleage_african_male, eyes/low-poly + brown, eyebrows/eyebrow003, eyelashes/eyelashes01, hair/afro01, clothes/male_casualsuit05, clothes/shoes04 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
   },
   {
-   "file": "people/person-06",
+   "file": "people/person-04",
    "size": [
-    1.39,
-    1.66,
-    0.25
+    1,
+    1.63,
+    0.44
    ],
    "min": [
-    -0.7,
+    -0.5,
+    0,
+    -0.1
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [
+    "body"
+   ],
+   "materials": [
+    "04_body",
+    "04_clothes0",
+    "04_clothes1",
+    "04_eyebrows",
+    "04_eyelashes",
+    "04_eyes",
+    "04_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/old_caucasian_female, eyes/low-poly + brown, eyebrows/eyebrow009, eyelashes/eyelashes01, hair/ponytail01, clothes/female_elegantsuit01, clothes/shoes03 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
+  },
+  {
+   "file": "people/person-05",
+   "size": [
+    1.09,
+    1.74,
+    0.49
+   ],
+   "min": [
+    -0.55,
     0,
     -0.13
    ],
@@ -263,11 +265,121 @@
     "talk",
     "walk"
    ],
-   "nodes": [],
-   "materials": [
-    "WomanCasual3Material"
+   "nodes": [
+    "body"
    ],
-   "credit": "Low-poly Woman Casual 3 · Razvan Savescu · CC-BY 4.0 · https://sketchfab.com/3d-models/low-poly-woman-casual-3-b71bf9a6065c4836b291258f1d8587b9"
+   "materials": [
+    "05_body",
+    "05_clothes0",
+    "05_clothes1",
+    "05_eyebrows",
+    "05_eyelashes",
+    "05_eyes",
+    "05_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/old_caucasian_male, eyes/low-poly + grey, eyebrows/eyebrow010, eyelashes/eyelashes01, hair/short04, clothes/male_casualsuit03, clothes/shoes01 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
+  },
+  {
+   "file": "people/person-06",
+   "size": [
+    1.03,
+    1.71,
+    0.42
+   ],
+   "min": [
+    -0.51,
+    0,
+    -0.11
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [
+    "body"
+   ],
+   "materials": [
+    "06_body",
+    "06_clothes0",
+    "06_clothes1",
+    "06_eyebrows",
+    "06_eyelashes",
+    "06_eyes",
+    "06_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/young_african_female, eyes/low-poly + brown, eyebrows/eyebrow004, eyelashes/eyelashes03, hair/braid01, clothes/male_casualsuit06, clothes/shoes05 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
+  },
+  {
+   "file": "people/person-07",
+   "size": [
+    1.12,
+    1.74,
+    0.49
+   ],
+   "min": [
+    -0.56,
+    0,
+    -0.14
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [
+    "body"
+   ],
+   "materials": [
+    "07_body",
+    "07_clothes0",
+    "07_clothes1",
+    "07_eyebrows",
+    "07_eyelashes",
+    "07_eyes",
+    "07_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/young_asian_male, eyes/low-poly + brown, eyebrows/eyebrow001, eyelashes/eyelashes01, hair/short01, clothes/male_elegantsuit01, clothes/shoes04 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
+  },
+  {
+   "file": "people/person-08",
+   "size": [
+    0.98,
+    1.61,
+    0.43
+   ],
+   "min": [
+    -0.49,
+    0,
+    -0.12
+   ],
+   "clips": [
+    "drive",
+    "idle",
+    "sit",
+    "sit_talk",
+    "talk",
+    "walk"
+   ],
+   "nodes": [
+    "body"
+   ],
+   "materials": [
+    "08_body",
+    "08_clothes0",
+    "08_clothes1",
+    "08_eyebrows",
+    "08_eyelashes",
+    "08_eyes",
+    "08_hair"
+   ],
+   "credit": "Personnage MakeHuman (MPFB) : skins/middleage_asian_female, eyes/low-poly + brown, eyebrows/eyebrow006, eyelashes/eyelashes02, hair/long01, clothes/male_casualsuit05, clothes/shoes03 · MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB) · CC0 1.0 · https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html"
   }
  ],
  "buildings": [

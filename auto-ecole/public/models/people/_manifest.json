@@ -1,1071 +1,1540 @@
 {
-  "conventions": "glTF 2.0 binaire, Y haut, 1 unité = 1 m, origine aux pieds, face vers +Z, pas de compression Draco/meshopt",
+  "conventions": "glTF 2.0 binaire, Y haut, 1 unité = 1 m, origine aux pieds, face vers +Z, pas de Draco/meshopt, textures WebP ≤ 1024 px (extension EXT_texture_webp requise)",
+  "generator": {
+    "title": "MakeHuman / MPFB 2.0.18 (extension Blender), maillage de base hm08, rig « game_engine »",
+    "url": "https://extensions.blender.org/add-ons/mpfb/",
+    "note": "personnages paramétriques générés par script (bpy 5.3) ; le code MPFB est GPL-3.0 mais ses sorties et les assets utilisés sont CC0"
+  },
   "animationSource": {
     "title": "Universal Animation Library [Standard]",
     "author": "Quaternius",
     "license": "CC0 1.0",
     "url": "https://quaternius.com/packs/universalanimationlibrary.html",
-    "note": "clips reciblés (retarget) dans Blender sur le squelette propre à chaque personnage ; marche sur place"
+    "note": "clips reciblés dans Blender (deltas de rotation monde + alignement des membres) ; marche sur place ; tête relevée de 8 à 13° par rapport à la source ; 24 i/s"
   },
-  "sharedSkeleton": false,
-  "sharedSkeletonNote": "Pas de squelette commun aux 6 fichiers : person-01 et person-04 ont chacun leur rig ; person-02/03/05/06 partagent les mêmes noms d'os (Hips, Spine, Chest, UpperChest, …) mais des proportions différentes. Chaque GLB embarque ses propres clips : ne pas les partager entre personnages.",
+  "sharedSkeleton": true,
+  "sharedSkeletonNote": "Les 8 fichiers ont les mêmes 53 os et les mêmes noms (Root, pelvis, spine_01..03, neck_01, head, clavicle/upperarm/lowerarm/hand_l|r, doigts, thigh/calf/foot/ball_l|r), mais des proportions différentes : chaque GLB embarque ses propres clips (la translation du bassin dépend de la taille). Les rotations sont transférables d'un personnage à l'autre, pas la piste de position de « pelvis ».",
+  "materialsNote": "Suffixes de matériaux : _body (peau, opaque), _clothesN (opaque, double face), _hair (alphaMode MASK, cutoff 0,4, double face), _eyes (MASK), _eyebrows et _eyelashes (BLEND : petites cartes alpha, mettre depthWrite=false ou alphaTest si tri gênant derrière une vitre).",
   "clipNotes": {
     "walk": "boucle, sur place ; déplacer la racine à walkSpeed m/s pour éviter le patinage",
-    "idle": "boucle, debout au repos",
-    "sit": "boucle, assis, mains sur les cuisses ; le bassin est à sitHip (x, y=hauteur, z) par rapport à l'origine : reculer la chaise de -z ; hauteur d'assise ≈ hipPosition.y − 0,10 m (≈ 0,45–0,48 m)",
+    "idle": "boucle, debout au repos (posture détendue, pieds écartés : la tête est ~5 cm plus bas que height)",
+    "sit": "boucle, assis, mains sur les cuisses ; origine aux pieds, bassin (os pelvis) à hipPosition (x, y=hauteur, z) : z = −0,25 m pour tous ; hauteur d'assise ≈ hipPosition.y − 0,10 m",
     "talk": "boucle, debout, parle en gesticulant",
-    "sit_talk": "boucle, assis, parle en gesticulant",
-    "drive": "boucle, assis, mains sur un volant (bras tendus vers +Z) ; même repère de bassin que sit (hipPosition)"
+    "sit_talk": "boucle, assis, parle en gesticulant ; même repère de bassin que sit",
+    "drive": "boucle, assis, bras tendus vers +Z (mains sur un volant) ; même repère de bassin que sit"
   },
   "files": [
     {
       "file": "person-01.glb",
-      "description": "homme — t-shirt blanc, jean foncé, cheveux courts (peints), visage sans traits",
+      "description": "homme ~28 ans, peau claire, chemise en jean bleue, jean, chaussures de ville marron, cheveux châtains courts",
       "sex": "homme",
-      "sizeBytes": 890340,
-      "triangles": 10176,
-      "height": 1.77,
+      "approxAge": 28,
+      "sizeBytes": 1650464,
+      "triangles": 28998,
+      "height": 1.79,
       "dimensions": {
-        "x": 1.132,
-        "y": 1.77,
-        "z": 0.216,
-        "note": "pose de repos (bras écartés), voir height pour la taille"
+        "x": 1.166,
+        "y": 1.806,
+        "z": 0.507,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
       },
       "nodes": {
         "armature": "Armature",
-        "meshes": [
-          "Man"
-        ],
-        "rootBone": "lowerBody",
-        "boneCount": 52,
+        "meshes": {
+          "body": 15368,
+          "clothes0": 7968,
+          "clothes1": 1586,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 3344
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
         "handBones": [
-          "L.hand",
-          "R.hand"
+          "hand_l",
+          "hand_r"
         ],
         "headBone": "head"
       },
       "materials": [
-        "ManMaterial",
-        "Hair"
+        {
+          "name": "01_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "01_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "01_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "01_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "01_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "01_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "01_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
       ],
       "textures": [
-        "ManColors"
+        {
+          "name": "body_young_lightskinned_male_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 46770
+        },
+        {
+          "name": "clothes0_male_casualsuit01_normal",
+          "mimeType": "image/webp",
+          "bytes": 18416
+        },
+        {
+          "name": "clothes0_male_casualsuit01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 45682
+        },
+        {
+          "name": "clothes1_shoes01_normal",
+          "mimeType": "image/webp",
+          "bytes": 24088
+        },
+        {
+          "name": "clothes1_shoes01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 102134
+        },
+        {
+          "name": "eyebrows_eyebrow001",
+          "mimeType": "image/webp",
+          "bytes": 10218
+        },
+        {
+          "name": "eyelashes_eyelashes01",
+          "mimeType": "image/webp",
+          "bytes": 19182
+        },
+        {
+          "name": "eyes_brown_eye",
+          "mimeType": "image/webp",
+          "bytes": 4092
+        },
+        {
+          "name": "hair_short02_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 125226
+        }
       ],
       "clips": [
         {
-          "name": "drive",
-          "duration": 1.667,
+          "name": "walk",
+          "duration": 1.333,
           "loop": true,
-          "source": "Driving_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.533,
-              -0.243
-            ],
-            [
-              0.003,
-              0.533,
-              -0.243
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.533,
-            -0.243
-          ]
+          "source": "Walk_Loop",
+          "rootBone": "pelvis",
+          "walkSpeed": 1.05
         },
         {
           "name": "idle",
           "duration": 2.5,
           "loop": true,
           "source": "Idle_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              -0.002,
-              0.836,
-              -0.039
-            ],
-            [
-              0.005,
-              0.844,
-              -0.037
-            ]
-          ]
+          "rootBone": "pelvis"
         },
         {
           "name": "sit",
           "duration": 1.667,
           "loop": true,
           "source": "Sitting_Idle_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.535,
-              -0.262
-            ],
-            [
-              0.003,
-              0.535,
-              -0.262
-            ]
-          ],
+          "rootBone": "pelvis",
           "hipPosition": [
-            0.003,
-            0.535,
-            -0.262
-          ]
-        },
-        {
-          "name": "sit_talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Sitting_Talking_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.535,
-              -0.262
-            ],
-            [
-              0.003,
-              0.535,
-              -0.262
-            ]
+            0.0,
+            0.583,
+            -0.25
           ],
-          "hipPosition": [
-            0.003,
-            0.535,
-            -0.262
-          ]
+          "seatHeight": 0.483
         },
         {
           "name": "talk",
           "duration": 2.917,
           "loop": true,
           "source": "Idle_Talking_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              -0.001,
-              0.838,
-              -0.039
-            ],
-            [
-              0.004,
-              0.843,
-              -0.037
-            ]
-          ]
+          "rootBone": "pelvis"
         },
         {
-          "name": "walk",
-          "duration": 1.333,
+          "name": "sit_talk",
+          "duration": 2.917,
           "loop": true,
-          "source": "Walk_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              -0.029,
-              0.834,
-              -0.004
-            ],
-            [
-              0.036,
-              0.881,
-              -0.004
-            ]
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.583,
+            -0.25
           ],
-          "walkSpeed": 0.89
+          "seatHeight": 0.483
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.581,
+            -0.25
+          ],
+          "seatHeight": 0.481
         }
       ],
       "credit": {
-        "title": "Low-poly Man",
-        "author": "Razvan Savescu",
-        "authorUsername": "razvansavescu",
-        "license": "CC-BY 4.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
-        "url": "https://sketchfab.com/3d-models/low-poly-man-7b93db2d46d847f191cf5e841b322856",
-        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage ; cheveux courts peints sur le crâne"
+        "title": "Personnage MakeHuman (MPFB) : skins/young_caucasian_male, eyes/low-poly + brown, eyebrows/eyebrow001, eyelashes/eyelashes01, hair/short02, clothes/male_casualsuit01, clothes/shoes01",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
       }
     },
     {
       "file": "person-02.glb",
-      "description": "homme — chemise bleue ouverte sur t-shirt gris, pantalon gris, barbe",
-      "sex": "homme",
-      "sizeBytes": 932120,
-      "triangles": 10824,
-      "height": 1.797,
-      "dimensions": {
-        "x": 1.475,
-        "y": 1.797,
-        "z": 0.236,
-        "note": "pose de repos (bras écartés), voir height pour la taille"
-      },
-      "nodes": {
-        "armature": "Armature",
-        "meshes": [
-          "ManCasual2"
-        ],
-        "rootBone": "Hips",
-        "boneCount": 52,
-        "handBones": [
-          "Hand.L",
-          "Hand.R"
-        ],
-        "headBone": "Head"
-      },
-      "materials": [
-        "ManCasual2Material"
-      ],
-      "textures": [
-        "ManCasual2Color"
-      ],
-      "clips": [
-        {
-          "name": "drive",
-          "duration": 1.667,
-          "loop": true,
-          "source": "Driving_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.574,
-              -0.243
-            ],
-            [
-              0.003,
-              0.574,
-              -0.243
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.574,
-            -0.243
-          ]
-        },
-        {
-          "name": "idle",
-          "duration": 2.5,
-          "loop": true,
-          "source": "Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.002,
-              0.89,
-              -0.035
-            ],
-            [
-              0.005,
-              0.898,
-              -0.033
-            ]
-          ]
-        },
-        {
-          "name": "sit",
-          "duration": 1.667,
-          "loop": true,
-          "source": "Sitting_Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.576,
-              -0.263
-            ],
-            [
-              0.003,
-              0.576,
-              -0.263
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.576,
-            -0.263
-          ]
-        },
-        {
-          "name": "sit_talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Sitting_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.576,
-              -0.263
-            ],
-            [
-              0.003,
-              0.576,
-              -0.263
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.576,
-            -0.263
-          ]
-        },
-        {
-          "name": "talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Idle_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.001,
-              0.891,
-              -0.034
-            ],
-            [
-              0.004,
-              0.897,
-              -0.033
-            ]
-          ]
-        },
-        {
-          "name": "walk",
-          "duration": 1.333,
-          "loop": true,
-          "source": "Walk_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.029,
-              0.887,
-              0.001
-            ],
-            [
-              0.037,
-              0.937,
-              0.001
-            ]
-          ],
-          "walkSpeed": 0.91
-        }
-      ],
-      "credit": {
-        "title": "Low-poly Man Casual Clothes 2",
-        "author": "Razvan Savescu",
-        "authorUsername": "razvansavescu",
-        "license": "CC-BY 4.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
-        "url": "https://sketchfab.com/3d-models/low-poly-man-casual-clothes-2-4a834adf1e33405c979e94555e7955c6",
-        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
-      }
-    },
-    {
-      "file": "person-03.glb",
-      "description": "homme — pull marron, jean, barbe",
-      "sex": "homme",
-      "sizeBytes": 929060,
-      "triangles": 10800,
-      "height": 1.756,
-      "dimensions": {
-        "x": 1.446,
-        "y": 1.756,
-        "z": 0.237,
-        "note": "pose de repos (bras écartés), voir height pour la taille"
-      },
-      "nodes": {
-        "armature": "Armature",
-        "meshes": [
-          "ManCasual5"
-        ],
-        "rootBone": "Hips",
-        "boneCount": 52,
-        "handBones": [
-          "Hand.L",
-          "Hand.R"
-        ],
-        "headBone": "Head"
-      },
-      "materials": [
-        "Material"
-      ],
-      "textures": [
-        "ManCasual5Color"
-      ],
-      "clips": [
-        {
-          "name": "drive",
-          "duration": 1.667,
-          "loop": true,
-          "source": "Driving_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.563,
-              -0.241
-            ],
-            [
-              0.003,
-              0.563,
-              -0.241
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.563,
-            -0.241
-          ]
-        },
-        {
-          "name": "idle",
-          "duration": 2.5,
-          "loop": true,
-          "source": "Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.002,
-              0.873,
-              -0.037
-            ],
-            [
-              0.005,
-              0.881,
-              -0.035
-            ]
-          ]
-        },
-        {
-          "name": "sit",
-          "duration": 1.667,
-          "loop": true,
-          "source": "Sitting_Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.565,
-              -0.26
-            ],
-            [
-              0.003,
-              0.565,
-              -0.26
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.565,
-            -0.26
-          ]
-        },
-        {
-          "name": "sit_talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Sitting_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.565,
-              -0.26
-            ],
-            [
-              0.003,
-              0.565,
-              -0.26
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.565,
-            -0.26
-          ]
-        },
-        {
-          "name": "talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Idle_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.001,
-              0.874,
-              -0.037
-            ],
-            [
-              0.004,
-              0.879,
-              -0.036
-            ]
-          ]
-        },
-        {
-          "name": "walk",
-          "duration": 1.333,
-          "loop": true,
-          "source": "Walk_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.029,
-              0.87,
-              -0.002
-            ],
-            [
-              0.036,
-              0.918,
-              -0.002
-            ]
-          ],
-          "walkSpeed": 0.89
-        }
-      ],
-      "credit": {
-        "title": "Low-poly Man Casual Clothes 5",
-        "author": "Razvan Savescu",
-        "authorUsername": "razvansavescu",
-        "license": "CC-BY 4.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
-        "url": "https://sketchfab.com/3d-models/low-poly-man-casual-clothes-5-2cb8c4b198e64a92b4bc9d32a0f2973d",
-        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
-      }
-    },
-    {
-      "file": "person-04.glb",
-      "description": "femme — haut gris manches longues, short jaune, cheveux noirs mi-longs, visage sans traits",
+      "description": "femme ~30 ans, peau claire, pull torsadé beige, pantalon gris, chaussures noires, queue de cheval châtain clair",
       "sex": "femme",
-      "sizeBytes": 896940,
-      "triangles": 10256,
-      "height": 1.647,
+      "approxAge": 30,
+      "sizeBytes": 1974964,
+      "triangles": 28999,
+      "height": 1.66,
       "dimensions": {
-        "x": 0.781,
-        "y": 1.647,
-        "z": 0.197,
-        "note": "pose de repos (bras écartés), voir height pour la taille"
+        "x": 1.014,
+        "y": 1.668,
+        "z": 0.429,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
       },
       "nodes": {
         "armature": "Armature",
-        "meshes": [
-          "girl",
-          "hair"
-        ],
-        "rootBone": "lowerBody",
-        "boneCount": 56,
+        "meshes": {
+          "body": 14170,
+          "clothes0": 4164,
+          "clothes1": 3187,
+          "clothes2": 1394,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 5352
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
         "handBones": [
-          "L.hand",
-          "R.hand"
+          "hand_l",
+          "hand_r"
         ],
         "headBone": "head"
       },
       "materials": [
-        "skin",
-        "hh",
-        "shorts",
-        "blouse",
-        "hair"
+        {
+          "name": "02_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "02_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "02_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "02_clothes2",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "02_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "02_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "02_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "02_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
       ],
-      "textures": [],
+      "textures": [
+        {
+          "name": "body_young_lightskinned_female_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 54432
+        },
+        {
+          "name": "clothes0_shirt-knit-NORM",
+          "mimeType": "image/webp",
+          "bytes": 8146
+        },
+        {
+          "name": "clothes0_shirt-knit",
+          "mimeType": "image/webp",
+          "bytes": 176412
+        },
+        {
+          "name": "clothes1_Pants_wool",
+          "mimeType": "image/webp",
+          "bytes": 42388
+        },
+        {
+          "name": "clothes2_shoes04_normal",
+          "mimeType": "image/webp",
+          "bytes": 24088
+        },
+        {
+          "name": "clothes2_shoes04_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 65612
+        },
+        {
+          "name": "eyebrows_eyebrow006",
+          "mimeType": "image/webp",
+          "bytes": 4222
+        },
+        {
+          "name": "eyelashes_eyelashes01",
+          "mimeType": "image/webp",
+          "bytes": 19182
+        },
+        {
+          "name": "eyes_brownlight_eye",
+          "mimeType": "image/webp",
+          "bytes": 4892
+        },
+        {
+          "name": "hair_ponytail01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 260286
+        }
+      ],
       "clips": [
         {
-          "name": "drive",
-          "duration": 1.667,
+          "name": "walk",
+          "duration": 1.333,
           "loop": true,
-          "source": "Driving_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.533,
-              -0.237
-            ],
-            [
-              0.003,
-              0.533,
-              -0.237
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.533,
-            -0.237
-          ]
+          "source": "Walk_Loop",
+          "rootBone": "pelvis",
+          "walkSpeed": 0.93
         },
         {
           "name": "idle",
           "duration": 2.5,
           "loop": true,
           "source": "Idle_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              -0.002,
-              0.837,
-              -0.03
-            ],
-            [
-              0.005,
-              0.845,
-              -0.028
-            ]
-          ]
+          "rootBone": "pelvis"
         },
         {
           "name": "sit",
           "duration": 1.667,
           "loop": true,
           "source": "Sitting_Idle_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.535,
-              -0.256
-            ],
-            [
-              0.003,
-              0.535,
-              -0.256
-            ]
-          ],
+          "rootBone": "pelvis",
           "hipPosition": [
-            0.003,
-            0.535,
-            -0.256
-          ]
-        },
-        {
-          "name": "sit_talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Sitting_Talking_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.535,
-              -0.256
-            ],
-            [
-              0.003,
-              0.535,
-              -0.256
-            ]
+            0.0,
+            0.522,
+            -0.25
           ],
-          "hipPosition": [
-            0.003,
-            0.535,
-            -0.256
-          ]
+          "seatHeight": 0.422
         },
         {
           "name": "talk",
           "duration": 2.917,
           "loop": true,
           "source": "Idle_Talking_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              -0.001,
-              0.838,
-              -0.03
-            ],
-            [
-              0.004,
-              0.843,
-              -0.029
-            ]
-          ]
+          "rootBone": "pelvis"
         },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.522,
+            -0.25
+          ],
+          "seatHeight": 0.422
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.52,
+            -0.25
+          ],
+          "seatHeight": 0.42
+        }
+      ],
+      "credit": {
+        "title": "Personnage MakeHuman (MPFB) : skins/young_caucasian_female, eyes/low-poly + brownlight, eyebrows/eyebrow006, eyelashes/eyelashes01, hair/ponytail01, clothes/toigo_fisherman_sweater, clothes/toigo_wool_pants, clothes/shoes04",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB ; vêtements des packs : MargaretToigo)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-03.glb",
+      "description": "homme ~45 ans, peau noire, veste kaki sur chemise, jean, chaussures noires, cheveux noirs courts",
+      "sex": "homme",
+      "approxAge": 45,
+      "sizeBytes": 1941564,
+      "triangles": 27806,
+      "height": 1.84,
+      "dimensions": {
+        "x": 1.184,
+        "y": 1.87,
+        "z": 0.536,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": {
+          "body": 15566,
+          "clothes0": 5996,
+          "clothes1": 3320,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 2192
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
+        "handBones": [
+          "hand_l",
+          "hand_r"
+        ],
+        "headBone": "head"
+      },
+      "materials": [
+        {
+          "name": "03_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "03_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "03_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "03_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "03_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "03_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "03_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
+      ],
+      "textures": [
+        {
+          "name": "body_middleage_darkskinned_male_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 31596
+        },
+        {
+          "name": "clothes0_male_casualsuit05_normal",
+          "mimeType": "image/webp",
+          "bytes": 9958
+        },
+        {
+          "name": "clothes0_male_casualsuit05_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 52810
+        },
+        {
+          "name": "clothes1_shoes04_normal",
+          "mimeType": "image/webp",
+          "bytes": 24088
+        },
+        {
+          "name": "clothes1_shoes04_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 65612
+        },
+        {
+          "name": "eyebrows_eyebrow003",
+          "mimeType": "image/webp",
+          "bytes": 11482
+        },
+        {
+          "name": "eyelashes_eyelashes01",
+          "mimeType": "image/webp",
+          "bytes": 19182
+        },
+        {
+          "name": "eyes_brown_eye",
+          "mimeType": "image/webp",
+          "bytes": 4092
+        },
+        {
+          "name": "hair_afro_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 447562
+        }
+      ],
+      "clips": [
         {
           "name": "walk",
           "duration": 1.333,
           "loop": true,
           "source": "Walk_Loop",
-          "rootBone": "lowerBody",
-          "rootTranslationRange": [
-            [
-              -0.029,
-              0.834,
-              0.005
-            ],
-            [
-              0.036,
-              0.881,
-              0.005
-            ]
+          "rootBone": "pelvis",
+          "walkSpeed": 1.08
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.61,
+            -0.25
           ],
-          "walkSpeed": 0.91
+          "seatHeight": 0.51
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.61,
+            -0.25
+          ],
+          "seatHeight": 0.51
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.608,
+            -0.25
+          ],
+          "seatHeight": 0.508
         }
       ],
       "credit": {
-        "title": "Low-poly Woman",
-        "author": "Razvan Savescu",
-        "authorUsername": "razvansavescu",
-        "license": "CC-BY 4.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
-        "url": "https://sketchfab.com/3d-models/low-poly-woman-752778128b9a4b578586dbce40c0366f",
-        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+        "title": "Personnage MakeHuman (MPFB) : skins/middleage_african_male, eyes/low-poly + brown, eyebrows/eyebrow003, eyelashes/eyelashes01, hair/afro01, clothes/male_casualsuit05, clothes/shoes04",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-04.glb",
+      "description": "femme ~58 ans, peau claire, chemisier rayé, jupe grise, bottines noires, carré gris argenté",
+      "sex": "femme",
+      "approxAge": 58,
+      "sizeBytes": 1783852,
+      "triangles": 28998,
+      "height": 1.62,
+      "dimensions": {
+        "x": 1.0,
+        "y": 1.628,
+        "z": 0.442,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": {
+          "body": 17120,
+          "clothes0": 2920,
+          "clothes1": 2874,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 5352
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
+        "handBones": [
+          "hand_l",
+          "hand_r"
+        ],
+        "headBone": "head"
+      },
+      "materials": [
+        {
+          "name": "04_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "04_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "04_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "04_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "04_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "04_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "04_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
+      ],
+      "textures": [
+        {
+          "name": "body_old_lightskinned_female_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 65028
+        },
+        {
+          "name": "clothes0_female_elegantsuit01_normal",
+          "mimeType": "image/webp",
+          "bytes": 8354
+        },
+        {
+          "name": "clothes0_female_elegantsuit01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 58824
+        },
+        {
+          "name": "clothes1_shoes03_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 23584
+        },
+        {
+          "name": "eyebrows_eyebrow009",
+          "mimeType": "image/webp",
+          "bytes": 23692
+        },
+        {
+          "name": "eyelashes_eyelashes01",
+          "mimeType": "image/webp",
+          "bytes": 19182
+        },
+        {
+          "name": "eyes_brown_eye",
+          "mimeType": "image/webp",
+          "bytes": 4092
+        },
+        {
+          "name": "hair_ponytail01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 258078
+        }
+      ],
+      "clips": [
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "pelvis",
+          "walkSpeed": 0.88
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.512,
+            -0.25
+          ],
+          "seatHeight": 0.412
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.512,
+            -0.25
+          ],
+          "seatHeight": 0.412
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.51,
+            -0.25
+          ],
+          "seatHeight": 0.41
+        }
+      ],
+      "credit": {
+        "title": "Personnage MakeHuman (MPFB) : skins/old_caucasian_female, eyes/low-poly + brown, eyebrows/eyebrow009, eyelashes/eyelashes01, hair/ponytail01, clothes/female_elegantsuit01, clothes/shoes03",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
       }
     },
     {
       "file": "person-05.glb",
-      "description": "femme — gilet vert sur robe/haut noir, collant noir, bottines, queue de cheval rousse",
-      "sex": "femme",
-      "sizeBytes": 936296,
-      "triangles": 10852,
-      "height": 1.693,
+      "description": "homme ~60 ans, peau claire, corpulent, chemise rayée, jean, chaussures de ville marron, cheveux gris courts",
+      "sex": "homme",
+      "approxAge": 60,
+      "sizeBytes": 1735904,
+      "triangles": 25294,
+      "height": 1.74,
       "dimensions": {
-        "x": 1.418,
-        "y": 1.693,
-        "z": 0.282,
-        "note": "pose de repos (bras écartés), voir height pour la taille"
+        "x": 1.094,
+        "y": 1.745,
+        "z": 0.49,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
       },
       "nodes": {
         "armature": "Armature",
-        "meshes": [
-          "Woman Casual 2"
-        ],
-        "rootBone": "Hips",
-        "boneCount": 52,
+        "meshes": {
+          "body": 15392,
+          "clothes0": 4800,
+          "clothes1": 3320,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 1050
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
         "handBones": [
-          "Hand.L",
-          "Hand.R"
+          "hand_l",
+          "hand_r"
         ],
-        "headBone": "Head"
+        "headBone": "head"
       },
       "materials": [
-        "WomanCasual2Material"
+        {
+          "name": "05_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "05_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "05_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "05_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "05_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "05_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "05_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
       ],
       "textures": [
-        "WomanCasual2Color"
+        {
+          "name": "body_old_lightskinned_male_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 91222
+        },
+        {
+          "name": "clothes0_male_casualsuit03_normal",
+          "mimeType": "image/webp",
+          "bytes": 25678
+        },
+        {
+          "name": "clothes0_male_casualsuit03_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 87416
+        },
+        {
+          "name": "clothes1_shoes01_normal",
+          "mimeType": "image/webp",
+          "bytes": 24088
+        },
+        {
+          "name": "clothes1_shoes01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 102134
+        },
+        {
+          "name": "eyebrows_eyebrow010",
+          "mimeType": "image/webp",
+          "bytes": 10622
+        },
+        {
+          "name": "eyelashes_eyelashes01",
+          "mimeType": "image/webp",
+          "bytes": 19182
+        },
+        {
+          "name": "eyes_grey_eye",
+          "mimeType": "image/webp",
+          "bytes": 4180
+        },
+        {
+          "name": "hair_short04_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 218118
+        }
       ],
       "clips": [
         {
-          "name": "drive",
-          "duration": 1.667,
+          "name": "walk",
+          "duration": 1.333,
           "loop": true,
-          "source": "Driving_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.526,
-              -0.209
-            ],
-            [
-              0.003,
-              0.526,
-              -0.209
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.526,
-            -0.209
-          ]
+          "source": "Walk_Loop",
+          "rootBone": "pelvis",
+          "walkSpeed": 1.0
         },
         {
           "name": "idle",
           "duration": 2.5,
           "loop": true,
           "source": "Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.002,
-              0.834,
-              -0.002
-            ],
-            [
-              0.005,
-              0.842,
-              0.0
-            ]
-          ]
+          "rootBone": "pelvis"
         },
         {
           "name": "sit",
           "duration": 1.667,
           "loop": true,
           "source": "Sitting_Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.528,
-              -0.229
-            ],
-            [
-              0.003,
-              0.528,
-              -0.229
-            ]
-          ],
+          "rootBone": "pelvis",
           "hipPosition": [
-            0.003,
-            0.528,
-            -0.229
-          ]
-        },
-        {
-          "name": "sit_talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Sitting_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.528,
-              -0.229
-            ],
-            [
-              0.003,
-              0.528,
-              -0.229
-            ]
+            0.0,
+            0.571,
+            -0.25
           ],
-          "hipPosition": [
-            0.003,
-            0.528,
-            -0.229
-          ]
+          "seatHeight": 0.471
         },
         {
           "name": "talk",
           "duration": 2.917,
           "loop": true,
           "source": "Idle_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.001,
-              0.835,
-              -0.001
-            ],
-            [
-              0.004,
-              0.84,
-              -0.0
-            ]
-          ]
+          "rootBone": "pelvis"
         },
         {
-          "name": "walk",
-          "duration": 1.333,
+          "name": "sit_talk",
+          "duration": 2.917,
           "loop": true,
-          "source": "Walk_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.029,
-              0.831,
-              0.034
-            ],
-            [
-              0.036,
-              0.879,
-              0.034
-            ]
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.571,
+            -0.25
           ],
-          "walkSpeed": 0.91
+          "seatHeight": 0.471
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.569,
+            -0.25
+          ],
+          "seatHeight": 0.469
         }
       ],
       "credit": {
-        "title": "Low-poly Woman Casual 2",
-        "author": "Razvan Savescu",
-        "authorUsername": "razvansavescu",
-        "license": "CC-BY 4.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
-        "url": "https://sketchfab.com/3d-models/low-poly-woman-casual-2-7b127f7a90e645eca0a3a48f056fc928",
-        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+        "title": "Personnage MakeHuman (MPFB) : skins/old_caucasian_male, eyes/low-poly + grey, eyebrows/eyebrow010, eyelashes/eyelashes01, hair/short04, clothes/male_casualsuit03, clothes/shoes01",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
       }
     },
     {
       "file": "person-06.glb",
-      "description": "femme — pull noir sur chemise blanche, pantalon noir, ballerines, cheveux châtains longs",
+      "description": "femme ~22 ans, peau noire, t-shirt blanc, jean, baskets blanches, tresse noire",
       "sex": "femme",
-      "sizeBytes": 934788,
-      "triangles": 10816,
-      "height": 1.665,
+      "approxAge": 22,
+      "sizeBytes": 1598224,
+      "triangles": 28997,
+      "height": 1.7,
       "dimensions": {
-        "x": 1.395,
-        "y": 1.665,
-        "z": 0.253,
-        "note": "pose de repos (bras écartés), voir height pour la taille"
+        "x": 1.028,
+        "y": 1.711,
+        "z": 0.423,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
       },
       "nodes": {
         "armature": "Armature",
-        "meshes": [
-          "WomanCasual3"
-        ],
-        "rootBone": "Hips",
-        "boneCount": 52,
+        "meshes": {
+          "body": 17074,
+          "clothes0": 3975,
+          "clothes1": 1698,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 5518
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
         "handBones": [
-          "Hand.L",
-          "Hand.R"
+          "hand_l",
+          "hand_r"
         ],
-        "headBone": "Head"
+        "headBone": "head"
       },
       "materials": [
-        "WomanCasual3Material"
+        {
+          "name": "06_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "06_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "06_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "06_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "06_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "06_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "06_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
       ],
       "textures": [
-        "WomanCasual3Color"
+        {
+          "name": "body_young_darkskinned_female_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 27962
+        },
+        {
+          "name": "clothes0_male_casualsuit06_normal",
+          "mimeType": "image/webp",
+          "bytes": 10046
+        },
+        {
+          "name": "clothes0_male_casualsuit06_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 40372
+        },
+        {
+          "name": "clothes1_shoes05_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 98256
+        },
+        {
+          "name": "eyebrows_eyebrow004",
+          "mimeType": "image/webp",
+          "bytes": 11376
+        },
+        {
+          "name": "eyelashes_eyelashes03",
+          "mimeType": "image/webp",
+          "bytes": 22270
+        },
+        {
+          "name": "eyes_brown_eye",
+          "mimeType": "image/webp",
+          "bytes": 4092
+        },
+        {
+          "name": "hair_braid01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 40274
+        }
       ],
       "clips": [
         {
-          "name": "drive",
-          "duration": 1.667,
+          "name": "walk",
+          "duration": 1.333,
           "loop": true,
-          "source": "Driving_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.516,
-              -0.226
-            ],
-            [
-              0.003,
-              0.516,
-              -0.226
-            ]
-          ],
-          "hipPosition": [
-            0.003,
-            0.516,
-            -0.226
-          ]
+          "source": "Walk_Loop",
+          "rootBone": "pelvis",
+          "walkSpeed": 0.96
         },
         {
           "name": "idle",
           "duration": 2.5,
           "loop": true,
           "source": "Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.002,
-              0.819,
-              -0.017
-            ],
-            [
-              0.005,
-              0.827,
-              -0.016
-            ]
-          ]
+          "rootBone": "pelvis"
         },
         {
           "name": "sit",
           "duration": 1.667,
           "loop": true,
           "source": "Sitting_Idle_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.518,
-              -0.246
-            ],
-            [
-              0.003,
-              0.518,
-              -0.246
-            ]
-          ],
+          "rootBone": "pelvis",
           "hipPosition": [
-            0.003,
-            0.518,
-            -0.246
-          ]
-        },
-        {
-          "name": "sit_talk",
-          "duration": 2.917,
-          "loop": true,
-          "source": "Sitting_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              0.003,
-              0.518,
-              -0.246
-            ],
-            [
-              0.003,
-              0.518,
-              -0.246
-            ]
+            0.0,
+            0.55,
+            -0.25
           ],
-          "hipPosition": [
-            0.003,
-            0.518,
-            -0.246
-          ]
+          "seatHeight": 0.45
         },
         {
           "name": "talk",
           "duration": 2.917,
           "loop": true,
           "source": "Idle_Talking_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.001,
-              0.82,
-              -0.017
-            ],
-            [
-              0.004,
-              0.825,
-              -0.016
-            ]
-          ]
+          "rootBone": "pelvis"
         },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.55,
+            -0.25
+          ],
+          "seatHeight": 0.45
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.548,
+            -0.25
+          ],
+          "seatHeight": 0.448
+        }
+      ],
+      "credit": {
+        "title": "Personnage MakeHuman (MPFB) : skins/young_african_female, eyes/low-poly + brown, eyebrows/eyebrow004, eyelashes/eyelashes03, hair/braid01, clothes/male_casualsuit06, clothes/shoes05",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-07.glb",
+      "description": "homme ~35 ans, type asiatique, costume sombre et cravate, chaussures noires, cheveux noirs courts",
+      "sex": "homme",
+      "approxAge": 35,
+      "sizeBytes": 1846080,
+      "triangles": 28999,
+      "height": 1.72,
+      "dimensions": {
+        "x": 1.122,
+        "y": 1.738,
+        "z": 0.494,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": {
+          "body": 15206,
+          "clothes0": 7679,
+          "clothes1": 1704,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 3678
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
+        "handBones": [
+          "hand_l",
+          "hand_r"
+        ],
+        "headBone": "head"
+      },
+      "materials": [
+        {
+          "name": "07_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "07_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "07_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "07_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "07_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "07_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "07_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
+      ],
+      "textures": [
+        {
+          "name": "body_young_lightskinned_male_diffuse3",
+          "mimeType": "image/webp",
+          "bytes": 42876
+        },
+        {
+          "name": "clothes0_male_elegantsuit01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 12994
+        },
+        {
+          "name": "clothes1_shoes04_normal",
+          "mimeType": "image/webp",
+          "bytes": 24088
+        },
+        {
+          "name": "clothes1_shoes04_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 65612
+        },
+        {
+          "name": "eyebrows_eyebrow001",
+          "mimeType": "image/webp",
+          "bytes": 10218
+        },
+        {
+          "name": "eyelashes_eyelashes01",
+          "mimeType": "image/webp",
+          "bytes": 19182
+        },
+        {
+          "name": "eyes_brown_eye",
+          "mimeType": "image/webp",
+          "bytes": 4092
+        },
+        {
+          "name": "hair_short01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 348460
+        }
+      ],
+      "clips": [
         {
           "name": "walk",
           "duration": 1.333,
           "loop": true,
           "source": "Walk_Loop",
-          "rootBone": "Hips",
-          "rootTranslationRange": [
-            [
-              -0.03,
-              0.816,
-              0.018
-            ],
-            [
-              0.037,
-              0.863,
-              0.019
-            ]
+          "rootBone": "pelvis",
+          "walkSpeed": 0.98
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.546,
+            -0.25
           ],
-          "walkSpeed": 0.92
+          "seatHeight": 0.446
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.546,
+            -0.25
+          ],
+          "seatHeight": 0.446
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.544,
+            -0.25
+          ],
+          "seatHeight": 0.444
         }
       ],
       "credit": {
-        "title": "Low-poly Woman Casual 3",
-        "author": "Razvan Savescu",
-        "authorUsername": "razvansavescu",
-        "license": "CC-BY 4.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
-        "url": "https://sketchfab.com/3d-models/low-poly-woman-casual-3-b71bf9a6065c4836b291258f1d8587b9",
-        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+        "title": "Personnage MakeHuman (MPFB) : skins/young_asian_male, eyes/low-poly + brown, eyebrows/eyebrow001, eyelashes/eyelashes01, hair/short01, clothes/male_elegantsuit01, clothes/shoes04",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-08.glb",
+      "description": "femme ~40 ans, métisse, veste beige sur chemise, jean noir, bottines noires, cheveux bruns longs",
+      "sex": "femme",
+      "approxAge": 40,
+      "sizeBytes": 1573464,
+      "triangles": 28997,
+      "height": 1.6,
+      "dimensions": {
+        "x": 0.978,
+        "y": 1.611,
+        "z": 0.43,
+        "note": "pose de repos (bras écartés, cheveux compris) ; height = taille sans les cheveux"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": {
+          "body": 15420,
+          "clothes0": 5175,
+          "clothes1": 3562,
+          "eyebrows": 192,
+          "eyelashes": 368,
+          "eyes": 172,
+          "hair": 4108
+        },
+        "rootBone": "Root",
+        "hipBone": "pelvis",
+        "boneCount": 53,
+        "handBones": [
+          "hand_l",
+          "hand_r"
+        ],
+        "headBone": "head"
+      },
+      "materials": [
+        {
+          "name": "08_body",
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        },
+        {
+          "name": "08_clothes0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "08_clothes1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true
+        },
+        {
+          "name": "08_eyebrows",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "08_eyelashes",
+          "alphaMode": "BLEND",
+          "doubleSided": true
+        },
+        {
+          "name": "08_eyes",
+          "alphaMode": "MASK",
+          "doubleSided": false
+        },
+        {
+          "name": "08_hair",
+          "alphaMode": "MASK",
+          "doubleSided": true
+        }
+      ],
+      "textures": [
+        {
+          "name": "body_middleage_lightskinned_female_diffuse2",
+          "mimeType": "image/webp",
+          "bytes": 36774
+        },
+        {
+          "name": "clothes0_male_casualsuit05_normal",
+          "mimeType": "image/webp",
+          "bytes": 9958
+        },
+        {
+          "name": "clothes0_male_casualsuit05_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 47578
+        },
+        {
+          "name": "clothes1_shoes03_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 23584
+        },
+        {
+          "name": "eyebrows_eyebrow006",
+          "mimeType": "image/webp",
+          "bytes": 4222
+        },
+        {
+          "name": "eyelashes_eyelashes02",
+          "mimeType": "image/webp",
+          "bytes": 22236
+        },
+        {
+          "name": "eyes_brown_eye",
+          "mimeType": "image/webp",
+          "bytes": 4092
+        },
+        {
+          "name": "hair_long01_diffuse",
+          "mimeType": "image/webp",
+          "bytes": 92158
+        }
+      ],
+      "clips": [
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "pelvis",
+          "walkSpeed": 0.87
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.506,
+            -0.25
+          ],
+          "seatHeight": 0.406
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "pelvis"
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.506,
+            -0.25
+          ],
+          "seatHeight": 0.406
+        },
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "pelvis",
+          "hipPosition": [
+            0.0,
+            0.504,
+            -0.25
+          ],
+          "seatHeight": 0.404
+        }
+      ],
+      "credit": {
+        "title": "Personnage MakeHuman (MPFB) : skins/middleage_asian_female, eyes/low-poly + brown, eyebrows/eyebrow006, eyelashes/eyelashes02, hair/long01, clothes/male_casualsuit05, clothes/shoes03",
+        "author": "MakeHuman Community (Joel Palmius, Jonas Hauquier, Data Collection AB)",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "url": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+        "modifications": "morphologie paramétrique, peau cachée sous les vêtements supprimée, décimation des vêtements, textures réduites/teintées, animations ajoutées par reciblage"
       }
     }
   ],
-  "totalSizeBytes": 5519544
+  "totalSizeBytes": 14104516
 }

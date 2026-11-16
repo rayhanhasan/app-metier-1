@@ -94,6 +94,18 @@ function Lamps({ spots }: { spots: [number, number, number][] }) {
 }
 
 /** Feuillage : découpe nette, double face, pas de reflets de ciel */
+/** Le tilleul sort trop vif : on le ramène vers un vert de feuillage réel */
+function tuneLinden(root: THREE.Object3D) {
+  tuneTree(root)
+  root.traverse((o) => {
+    const mat = (o as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined
+    if (mat && /leaves|leaf/.test(mat.name) && !mat.userData.linden) {
+      mat.userData.linden = true
+      mat.color.set('#5f7d42')
+    }
+  })
+}
+
 function tuneTree(root: THREE.Object3D) {
   root.traverse((o) => {
     const m = o as THREE.Mesh
@@ -131,7 +143,9 @@ export function Props() {
     for (let x = -42; x <= 44; x += 12) {
       // pas d'arbre devant la vitrine ni devant les accès du parking
       const nearAccess = Math.abs(x - SIDE_STREET.x) < 5 || Math.abs(x - CROSSING.x) < 4
-      if (!nearAccess && (x < SCHOOL.x0 - 4 || x > LOT.x1 + 1)) add(x, zN, 0.8)
+      // ni devant la terrasse du café
+      const terrace = x > -45 && x < -27
+      if (!nearAccess && !terrace && (x < SCHOOL.x0 - 4 || x > LOT.x1 + 1)) add(x, zN, 0.8)
       // côté sud : on dégage la vue sur l'auto-école et son parking
       if (x + 6 < -20 || x + 6 > 40) add(x + 6, zS, 0.85)
     }
@@ -172,7 +186,7 @@ export function Props() {
   return (
     <group>
       {trees.map((t, i) => (
-        <Model key={i} file={t.file} position={[t.x, SW, t.z]} rotation={t.r} scale={t.s} tune={tuneTree} />
+        <Model key={i} file={t.file} position={[t.x, SW, t.z]} rotation={t.r} scale={t.s} tune={t.file.endsWith('tree-02') ? tuneLinden : tuneTree} />
       ))}
       {/* massifs bas côté est du square */}
       {[[14, PARK.z0 + 9], [21, PARK.z0 + 13], [25, PARK.z0 + 7], [17, PARK.z0 + 21], [24, PARK.z0 + 24]].map(([x, z], i) => (

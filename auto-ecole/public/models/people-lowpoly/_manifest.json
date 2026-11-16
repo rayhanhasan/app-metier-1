@@ -1,0 +1,1071 @@
+{
+  "conventions": "glTF 2.0 binaire, Y haut, 1 unité = 1 m, origine aux pieds, face vers +Z, pas de compression Draco/meshopt",
+  "animationSource": {
+    "title": "Universal Animation Library [Standard]",
+    "author": "Quaternius",
+    "license": "CC0 1.0",
+    "url": "https://quaternius.com/packs/universalanimationlibrary.html",
+    "note": "clips reciblés (retarget) dans Blender sur le squelette propre à chaque personnage ; marche sur place"
+  },
+  "sharedSkeleton": false,
+  "sharedSkeletonNote": "Pas de squelette commun aux 6 fichiers : person-01 et person-04 ont chacun leur rig ; person-02/03/05/06 partagent les mêmes noms d'os (Hips, Spine, Chest, UpperChest, …) mais des proportions différentes. Chaque GLB embarque ses propres clips : ne pas les partager entre personnages.",
+  "clipNotes": {
+    "walk": "boucle, sur place ; déplacer la racine à walkSpeed m/s pour éviter le patinage",
+    "idle": "boucle, debout au repos",
+    "sit": "boucle, assis, mains sur les cuisses ; le bassin est à sitHip (x, y=hauteur, z) par rapport à l'origine : reculer la chaise de -z ; hauteur d'assise ≈ hipPosition.y − 0,10 m (≈ 0,45–0,48 m)",
+    "talk": "boucle, debout, parle en gesticulant",
+    "sit_talk": "boucle, assis, parle en gesticulant",
+    "drive": "boucle, assis, mains sur un volant (bras tendus vers +Z) ; même repère de bassin que sit (hipPosition)"
+  },
+  "files": [
+    {
+      "file": "person-01.glb",
+      "description": "homme — t-shirt blanc, jean foncé, cheveux courts (peints), visage sans traits",
+      "sex": "homme",
+      "sizeBytes": 890340,
+      "triangles": 10176,
+      "height": 1.77,
+      "dimensions": {
+        "x": 1.132,
+        "y": 1.77,
+        "z": 0.216,
+        "note": "pose de repos (bras écartés), voir height pour la taille"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": [
+          "Man"
+        ],
+        "rootBone": "lowerBody",
+        "boneCount": 52,
+        "handBones": [
+          "L.hand",
+          "R.hand"
+        ],
+        "headBone": "head"
+      },
+      "materials": [
+        "ManMaterial",
+        "Hair"
+      ],
+      "textures": [
+        "ManColors"
+      ],
+      "clips": [
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.533,
+              -0.243
+            ],
+            [
+              0.003,
+              0.533,
+              -0.243
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.533,
+            -0.243
+          ]
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              -0.002,
+              0.836,
+              -0.039
+            ],
+            [
+              0.005,
+              0.844,
+              -0.037
+            ]
+          ]
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.535,
+              -0.262
+            ],
+            [
+              0.003,
+              0.535,
+              -0.262
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.535,
+            -0.262
+          ]
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.535,
+              -0.262
+            ],
+            [
+              0.003,
+              0.535,
+              -0.262
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.535,
+            -0.262
+          ]
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              -0.001,
+              0.838,
+              -0.039
+            ],
+            [
+              0.004,
+              0.843,
+              -0.037
+            ]
+          ]
+        },
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              -0.029,
+              0.834,
+              -0.004
+            ],
+            [
+              0.036,
+              0.881,
+              -0.004
+            ]
+          ],
+          "walkSpeed": 0.89
+        }
+      ],
+      "credit": {
+        "title": "Low-poly Man",
+        "author": "Razvan Savescu",
+        "authorUsername": "razvansavescu",
+        "license": "CC-BY 4.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+        "url": "https://sketchfab.com/3d-models/low-poly-man-7b93db2d46d847f191cf5e841b322856",
+        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage ; cheveux courts peints sur le crâne"
+      }
+    },
+    {
+      "file": "person-02.glb",
+      "description": "homme — chemise bleue ouverte sur t-shirt gris, pantalon gris, barbe",
+      "sex": "homme",
+      "sizeBytes": 932120,
+      "triangles": 10824,
+      "height": 1.797,
+      "dimensions": {
+        "x": 1.475,
+        "y": 1.797,
+        "z": 0.236,
+        "note": "pose de repos (bras écartés), voir height pour la taille"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": [
+          "ManCasual2"
+        ],
+        "rootBone": "Hips",
+        "boneCount": 52,
+        "handBones": [
+          "Hand.L",
+          "Hand.R"
+        ],
+        "headBone": "Head"
+      },
+      "materials": [
+        "ManCasual2Material"
+      ],
+      "textures": [
+        "ManCasual2Color"
+      ],
+      "clips": [
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.574,
+              -0.243
+            ],
+            [
+              0.003,
+              0.574,
+              -0.243
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.574,
+            -0.243
+          ]
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.002,
+              0.89,
+              -0.035
+            ],
+            [
+              0.005,
+              0.898,
+              -0.033
+            ]
+          ]
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.576,
+              -0.263
+            ],
+            [
+              0.003,
+              0.576,
+              -0.263
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.576,
+            -0.263
+          ]
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.576,
+              -0.263
+            ],
+            [
+              0.003,
+              0.576,
+              -0.263
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.576,
+            -0.263
+          ]
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.001,
+              0.891,
+              -0.034
+            ],
+            [
+              0.004,
+              0.897,
+              -0.033
+            ]
+          ]
+        },
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.029,
+              0.887,
+              0.001
+            ],
+            [
+              0.037,
+              0.937,
+              0.001
+            ]
+          ],
+          "walkSpeed": 0.91
+        }
+      ],
+      "credit": {
+        "title": "Low-poly Man Casual Clothes 2",
+        "author": "Razvan Savescu",
+        "authorUsername": "razvansavescu",
+        "license": "CC-BY 4.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+        "url": "https://sketchfab.com/3d-models/low-poly-man-casual-clothes-2-4a834adf1e33405c979e94555e7955c6",
+        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-03.glb",
+      "description": "homme — pull marron, jean, barbe",
+      "sex": "homme",
+      "sizeBytes": 929060,
+      "triangles": 10800,
+      "height": 1.756,
+      "dimensions": {
+        "x": 1.446,
+        "y": 1.756,
+        "z": 0.237,
+        "note": "pose de repos (bras écartés), voir height pour la taille"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": [
+          "ManCasual5"
+        ],
+        "rootBone": "Hips",
+        "boneCount": 52,
+        "handBones": [
+          "Hand.L",
+          "Hand.R"
+        ],
+        "headBone": "Head"
+      },
+      "materials": [
+        "Material"
+      ],
+      "textures": [
+        "ManCasual5Color"
+      ],
+      "clips": [
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.563,
+              -0.241
+            ],
+            [
+              0.003,
+              0.563,
+              -0.241
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.563,
+            -0.241
+          ]
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.002,
+              0.873,
+              -0.037
+            ],
+            [
+              0.005,
+              0.881,
+              -0.035
+            ]
+          ]
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.565,
+              -0.26
+            ],
+            [
+              0.003,
+              0.565,
+              -0.26
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.565,
+            -0.26
+          ]
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.565,
+              -0.26
+            ],
+            [
+              0.003,
+              0.565,
+              -0.26
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.565,
+            -0.26
+          ]
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.001,
+              0.874,
+              -0.037
+            ],
+            [
+              0.004,
+              0.879,
+              -0.036
+            ]
+          ]
+        },
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.029,
+              0.87,
+              -0.002
+            ],
+            [
+              0.036,
+              0.918,
+              -0.002
+            ]
+          ],
+          "walkSpeed": 0.89
+        }
+      ],
+      "credit": {
+        "title": "Low-poly Man Casual Clothes 5",
+        "author": "Razvan Savescu",
+        "authorUsername": "razvansavescu",
+        "license": "CC-BY 4.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+        "url": "https://sketchfab.com/3d-models/low-poly-man-casual-clothes-5-2cb8c4b198e64a92b4bc9d32a0f2973d",
+        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-04.glb",
+      "description": "femme — haut gris manches longues, short jaune, cheveux noirs mi-longs, visage sans traits",
+      "sex": "femme",
+      "sizeBytes": 896940,
+      "triangles": 10256,
+      "height": 1.647,
+      "dimensions": {
+        "x": 0.781,
+        "y": 1.647,
+        "z": 0.197,
+        "note": "pose de repos (bras écartés), voir height pour la taille"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": [
+          "girl",
+          "hair"
+        ],
+        "rootBone": "lowerBody",
+        "boneCount": 56,
+        "handBones": [
+          "L.hand",
+          "R.hand"
+        ],
+        "headBone": "head"
+      },
+      "materials": [
+        "skin",
+        "hh",
+        "shorts",
+        "blouse",
+        "hair"
+      ],
+      "textures": [],
+      "clips": [
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.533,
+              -0.237
+            ],
+            [
+              0.003,
+              0.533,
+              -0.237
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.533,
+            -0.237
+          ]
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              -0.002,
+              0.837,
+              -0.03
+            ],
+            [
+              0.005,
+              0.845,
+              -0.028
+            ]
+          ]
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.535,
+              -0.256
+            ],
+            [
+              0.003,
+              0.535,
+              -0.256
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.535,
+            -0.256
+          ]
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.535,
+              -0.256
+            ],
+            [
+              0.003,
+              0.535,
+              -0.256
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.535,
+            -0.256
+          ]
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              -0.001,
+              0.838,
+              -0.03
+            ],
+            [
+              0.004,
+              0.843,
+              -0.029
+            ]
+          ]
+        },
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "lowerBody",
+          "rootTranslationRange": [
+            [
+              -0.029,
+              0.834,
+              0.005
+            ],
+            [
+              0.036,
+              0.881,
+              0.005
+            ]
+          ],
+          "walkSpeed": 0.91
+        }
+      ],
+      "credit": {
+        "title": "Low-poly Woman",
+        "author": "Razvan Savescu",
+        "authorUsername": "razvansavescu",
+        "license": "CC-BY 4.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+        "url": "https://sketchfab.com/3d-models/low-poly-woman-752778128b9a4b578586dbce40c0366f",
+        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-05.glb",
+      "description": "femme — gilet vert sur robe/haut noir, collant noir, bottines, queue de cheval rousse",
+      "sex": "femme",
+      "sizeBytes": 936296,
+      "triangles": 10852,
+      "height": 1.693,
+      "dimensions": {
+        "x": 1.418,
+        "y": 1.693,
+        "z": 0.282,
+        "note": "pose de repos (bras écartés), voir height pour la taille"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": [
+          "Woman Casual 2"
+        ],
+        "rootBone": "Hips",
+        "boneCount": 52,
+        "handBones": [
+          "Hand.L",
+          "Hand.R"
+        ],
+        "headBone": "Head"
+      },
+      "materials": [
+        "WomanCasual2Material"
+      ],
+      "textures": [
+        "WomanCasual2Color"
+      ],
+      "clips": [
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.526,
+              -0.209
+            ],
+            [
+              0.003,
+              0.526,
+              -0.209
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.526,
+            -0.209
+          ]
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.002,
+              0.834,
+              -0.002
+            ],
+            [
+              0.005,
+              0.842,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.528,
+              -0.229
+            ],
+            [
+              0.003,
+              0.528,
+              -0.229
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.528,
+            -0.229
+          ]
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.528,
+              -0.229
+            ],
+            [
+              0.003,
+              0.528,
+              -0.229
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.528,
+            -0.229
+          ]
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.001,
+              0.835,
+              -0.001
+            ],
+            [
+              0.004,
+              0.84,
+              -0.0
+            ]
+          ]
+        },
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.029,
+              0.831,
+              0.034
+            ],
+            [
+              0.036,
+              0.879,
+              0.034
+            ]
+          ],
+          "walkSpeed": 0.91
+        }
+      ],
+      "credit": {
+        "title": "Low-poly Woman Casual 2",
+        "author": "Razvan Savescu",
+        "authorUsername": "razvansavescu",
+        "license": "CC-BY 4.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+        "url": "https://sketchfab.com/3d-models/low-poly-woman-casual-2-7b127f7a90e645eca0a3a48f056fc928",
+        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+      }
+    },
+    {
+      "file": "person-06.glb",
+      "description": "femme — pull noir sur chemise blanche, pantalon noir, ballerines, cheveux châtains longs",
+      "sex": "femme",
+      "sizeBytes": 934788,
+      "triangles": 10816,
+      "height": 1.665,
+      "dimensions": {
+        "x": 1.395,
+        "y": 1.665,
+        "z": 0.253,
+        "note": "pose de repos (bras écartés), voir height pour la taille"
+      },
+      "nodes": {
+        "armature": "Armature",
+        "meshes": [
+          "WomanCasual3"
+        ],
+        "rootBone": "Hips",
+        "boneCount": 52,
+        "handBones": [
+          "Hand.L",
+          "Hand.R"
+        ],
+        "headBone": "Head"
+      },
+      "materials": [
+        "WomanCasual3Material"
+      ],
+      "textures": [
+        "WomanCasual3Color"
+      ],
+      "clips": [
+        {
+          "name": "drive",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Driving_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.516,
+              -0.226
+            ],
+            [
+              0.003,
+              0.516,
+              -0.226
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.516,
+            -0.226
+          ]
+        },
+        {
+          "name": "idle",
+          "duration": 2.5,
+          "loop": true,
+          "source": "Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.002,
+              0.819,
+              -0.017
+            ],
+            [
+              0.005,
+              0.827,
+              -0.016
+            ]
+          ]
+        },
+        {
+          "name": "sit",
+          "duration": 1.667,
+          "loop": true,
+          "source": "Sitting_Idle_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.518,
+              -0.246
+            ],
+            [
+              0.003,
+              0.518,
+              -0.246
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.518,
+            -0.246
+          ]
+        },
+        {
+          "name": "sit_talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Sitting_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              0.003,
+              0.518,
+              -0.246
+            ],
+            [
+              0.003,
+              0.518,
+              -0.246
+            ]
+          ],
+          "hipPosition": [
+            0.003,
+            0.518,
+            -0.246
+          ]
+        },
+        {
+          "name": "talk",
+          "duration": 2.917,
+          "loop": true,
+          "source": "Idle_Talking_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.001,
+              0.82,
+              -0.017
+            ],
+            [
+              0.004,
+              0.825,
+              -0.016
+            ]
+          ]
+        },
+        {
+          "name": "walk",
+          "duration": 1.333,
+          "loop": true,
+          "source": "Walk_Loop",
+          "rootBone": "Hips",
+          "rootTranslationRange": [
+            [
+              -0.03,
+              0.816,
+              0.018
+            ],
+            [
+              0.037,
+              0.863,
+              0.019
+            ]
+          ],
+          "walkSpeed": 0.92
+        }
+      ],
+      "credit": {
+        "title": "Low-poly Woman Casual 3",
+        "author": "Razvan Savescu",
+        "authorUsername": "razvansavescu",
+        "license": "CC-BY 4.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+        "url": "https://sketchfab.com/3d-models/low-poly-woman-casual-3-b71bf9a6065c4836b291258f1d8587b9",
+        "modifications": "mise à l'échelle, subdivision (Catmull-Clark niveau 1), animations ajoutées par reciblage"
+      }
+    }
+  ],
+  "totalSizeBytes": 5519544
+}

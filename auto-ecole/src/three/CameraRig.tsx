@@ -12,7 +12,7 @@ export const VIEWS: Record<Exclude<Shot, 'free' | 'chase'>, View> = {
   hero: { pos: [50, 21, 58], target: [3, 6.5, -12] },
   front: { pos: [sx + 9, 3.1, 6.5], target: [sx - 1.5, 1.9, -13] },
   lot: { pos: [LOT.x1 + 9, 13, 6], target: [(LOT.x0 + LOT.x1) / 2 - 2, 0.8, -15] },
-  cafe: { pos: [-22, 4.2, 5.5], target: [-37, 1.4, -8] },
+  cafe: { pos: [-30.5, 2.7, 2.2], target: [-38.5, 1.25, -7.6] },
   roundabout: { pos: [ROUNDABOUT.x + 30, 26, 34], target: [ROUNDABOUT.x - 4, 0, -2] },
   top: { pos: [8, 92, 24], target: [6, 0, -6] },
 }
